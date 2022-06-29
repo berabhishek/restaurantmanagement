@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_page">
+    <sp_page action="DELETE">
+        <category>custom</category>
+        <css/>
+        <draft>false</draft>
+        <dynamic_title_structure/>
+        <id>restaurant_index</id>
+        <internal>false</internal>
+        <omit_watcher>false</omit_watcher>
+        <public>true</public>
+        <roles/>
+        <seo_script/>
+        <short_description>Index page of restaurant service portal</short_description>
+        <sys_class_name>sp_page</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-06-16 06:13:17</sys_created_on>
+        <sys_id>d2c010f641c41550f877fdd676e404d3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>restaurant_index</sys_name>
+        <sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</sys_scope>
+        <sys_update_name>sp_page_d2c010f641c41550f877fdd676e404d3</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-06-16 06:13:17</sys_updated_on>
+        <title>Restaurant Index</title>
+        <use_seo_script>false</use_seo_script>
+    </sp_page>
+    <sys_translated_text action="DELETE" query="documentkey=d2c010f641c41550f877fdd676e404d3"/>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</application>
+        <file_path/>
+        <instance_id>c0b26ae9f0330110f87765368869fbdd</instance_id>
+        <instance_name>instance</instance_name>
+        <name>sp_page_d2c010f641c41550f877fdd676e404d3</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_page"><sp_page action="INSERT_OR_UPDATE"><category>custom</category><css/><draft>false</draft><dynamic_title_structure/><id>restaurant_index</id><internal>false</internal><omit_watcher>false</omit_watcher><public>true</public><roles/><seo_script/><short_description>Index page of restaurant service portal</short_description><sys_class_name>sp_page</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2022-06-16 06:13:17</sys_created_on><sys_id>d2c010f641c41550f877fdd676e404d3</sys_id><sys_mod_count>0</sys_mod_count><sys_name>restaurant_index</sys_name><sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package><sys_policy/><sys_scope display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</sys_scope><sys_update_name>sp_page_d2c010f641c41550f877fdd676e404d3</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2022-06-16 06:13:17</sys_updated_on><title>Restaurant Index</title><use_seo_script>false</use_seo_script></sp_page><sys_translated_text action="delete_multiple" query="documentkey=d2c010f641c41550f877fdd676e404d3"/></record_update>]]></payload>
+        <payload_hash>503843557</payload_hash>
+        <record_name>restaurant_index</record_name>
+        <reverted_from/>
+        <source>bdaae16741730910f877fdd676e404d1</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-06-16 06:13:17</sys_created_on>
+        <sys_id>ce51103a41c41550f877fdd676e404cd</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1816b2507ac0000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-06-16 06:13:17</sys_updated_on>
+        <type>Page</type>
+        <update_guid>0a51103a09c415505b634cd9d99fc1cd</update_guid>
+        <update_guid_history>0a51103a09c415505b634cd9d99fc1cd:503843557</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="restaurant_index">99a1943a41c41550f877fdd676e40478</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-06-16 06:14:36</sys_created_on>
+        <sys_db_object display_value="" name="sp_page">sp_page</sys_db_object>
+        <sys_id>8b2389303b444d1eabf9b56caf4e8419</sys_id>
+        <sys_metadata>d2c010f641c41550f877fdd676e404d3</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>restaurant_index</sys_name>
+        <sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</sys_scope>
+        <sys_scope_delete display_value="">2fc304b5326340dba29f505a63b222c1</sys_scope_delete>
+        <sys_update_name>sp_page_d2c010f641c41550f877fdd676e404d3</sys_update_name>
+        <sys_update_version display_value="sp_page_d2c010f641c41550f877fdd676e404d3">ce51103a41c41550f877fdd676e404cd</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+    </sys_metadata_delete>
+</record_update>

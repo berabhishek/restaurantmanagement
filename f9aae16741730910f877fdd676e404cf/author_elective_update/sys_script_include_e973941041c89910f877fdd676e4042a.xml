@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="DELETE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_snc_restaurant_m.Restaurant_Management_Utils</api_name>
+        <caller_access/>
+        <client_callable>true</client_callable>
+        <description/>
+        <name>Restaurant_Management_Utils</name>
+        <script/>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-06-08 11:59:40</sys_created_on>
+        <sys_id>e973941041c89910f877fdd676e4042a</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>Restaurant_Management_Utils</sys_name>
+        <sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</sys_scope>
+        <sys_update_name>sys_script_include_e973941041c89910f877fdd676e4042a</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-06-08 12:04:46</sys_updated_on>
+    </sys_script_include>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</application>
+        <file_path/>
+        <instance_id>c0b26ae9f0330110f87765368869fbdd</instance_id>
+        <instance_name>instance</instance_name>
+        <name>sys_script_include_e973941041c89910f877fdd676e4042a</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include"><sys_script_include action="INSERT_OR_UPDATE"><access>public</access><active>true</active><api_name>x_snc_restaurant_m.Restaurant_Management_Utils</api_name><caller_access/><client_callable>true</client_callable><description/><name>Restaurant_Management_Utils</name><script/><sys_class_name>sys_script_include</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2022-06-08 11:59:40</sys_created_on><sys_id>e973941041c89910f877fdd676e4042a</sys_id><sys_mod_count>1</sys_mod_count><sys_name>Restaurant_Management_Utils</sys_name><sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package><sys_policy>read</sys_policy><sys_scope display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</sys_scope><sys_update_name>sys_script_include_e973941041c89910f877fdd676e4042a</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2022-06-08 12:04:46</sys_updated_on></sys_script_include></record_update>]]></payload>
+        <payload_hash>-397427893</payload_hash>
+        <record_name>Restaurant_Management_Utils</record_name>
+        <reverted_from/>
+        <source>bdaae16741730910f877fdd676e404d1</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-06-08 12:04:46</sys_created_on>
+        <sys_id>ec15d85041c89910f877fdd676e40402</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1814333f0af0000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-06-08 12:04:46</sys_updated_on>
+        <type>Script Include</type>
+        <update_guid>6815d8504ec899100cb3ffd62d83b502</update_guid>
+        <update_guid_history>6815d8504ec899100cb3ffd62d83b502:-397427893,0ee31cdc3d889910d6d92580e385de64:1203629240</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-06-08 12:04:57</sys_created_on>
+        <sys_db_object display_value="" name="sys_script_include">sys_script_include</sys_db_object>
+        <sys_id>261c100c3ed34bec9152cf44978008a4</sys_id>
+        <sys_metadata>e973941041c89910f877fdd676e4042a</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Restaurant_Management_Utils</sys_name>
+        <sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package>
+        <sys_parent/>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</sys_scope>
+        <sys_scope_delete display_value="">2fc304b5326340dba29f505a63b222c1</sys_scope_delete>
+        <sys_update_name>sys_script_include_e973941041c89910f877fdd676e4042a</sys_update_name>
+        <sys_update_version display_value="sys_script_include_e973941041c89910f877fdd676e4042a">ec15d85041c89910f877fdd676e40402</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+    </sys_metadata_delete>
+</record_update>

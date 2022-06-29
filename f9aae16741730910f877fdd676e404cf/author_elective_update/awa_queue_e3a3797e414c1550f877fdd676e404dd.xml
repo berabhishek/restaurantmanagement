@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="awa_queue">
+    <awa_queue action="DELETE">
+        <active>false</active>
+        <average_wait_time>1970-01-01 00:00:30</average_wait_time>
+        <condition/>
+        <condition_mode>simple</condition_mode>
+        <condition_script><![CDATA[(function executeCondition(/* glide record */ current) {  
+	// customize condition logic here, return true or false  
+	return false;
+})(current);]]></condition_script>
+        <evaluation_scope>document</evaluation_scope>
+        <external>false</external>
+        <external_id/>
+        <initial_agent_response>Thank you for contacting support. I am looking into your question now and will be with you shortly.</initial_agent_response>
+        <max_wait_time/>
+        <max_wait_time_message>No agents are available to chat right now. Check back later.</max_wait_time_message>
+        <name>Restaurant Queue</name>
+        <number>QUE00011</number>
+        <order>100</order>
+        <schedule/>
+        <service_channel display_value="Restaurant service channel">5083b57e414c1550f877fdd676e4048a</service_channel>
+        <short_description/>
+        <subflow/>
+        <sys_class_name>awa_queue</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-06-16 13:23:14</sys_created_on>
+        <sys_id>e3a3797e414c1550f877fdd676e404dd</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>Restaurant Queue</sys_name>
+        <sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</sys_scope>
+        <sys_update_name>awa_queue_e3a3797e414c1550f877fdd676e404dd</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-06-16 15:05:44</sys_updated_on>
+        <target_wait_time/>
+        <use_condition>true</use_condition>
+    </awa_queue>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</application>
+        <file_path/>
+        <instance_id>c0b26ae9f0330110f87765368869fbdd</instance_id>
+        <instance_name>instance</instance_name>
+        <name>awa_queue_e3a3797e414c1550f877fdd676e404dd</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="awa_queue"&gt;&lt;awa_queue action="INSERT_OR_UPDATE"&gt;&lt;active&gt;false&lt;/active&gt;&lt;average_wait_time&gt;1970-01-01 00:00:30&lt;/average_wait_time&gt;&lt;condition/&gt;&lt;condition_mode&gt;simple&lt;/condition_mode&gt;&lt;condition_script&gt;&lt;![CDATA[(function executeCondition(/* glide record */ current) {  
+	// customize condition logic here, return true or false  
+	return false;
+})(current);]]&gt;&lt;/condition_script&gt;&lt;evaluation_scope&gt;document&lt;/evaluation_scope&gt;&lt;external&gt;false&lt;/external&gt;&lt;external_id/&gt;&lt;initial_agent_response&gt;Thank you for contacting support. I am looking into your question now and will be with you shortly.&lt;/initial_agent_response&gt;&lt;max_wait_time/&gt;&lt;max_wait_time_message&gt;No agents are available to chat right now. Check back later.&lt;/max_wait_time_message&gt;&lt;name&gt;Restaurant Queue&lt;/name&gt;&lt;number&gt;QUE00011&lt;/number&gt;&lt;order&gt;100&lt;/order&gt;&lt;schedule/&gt;&lt;service_channel display_value="Restaurant service channel"&gt;5083b57e414c1550f877fdd676e4048a&lt;/service_channel&gt;&lt;short_description/&gt;&lt;subflow/&gt;&lt;sys_class_name&gt;awa_queue&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2022-06-16 13:23:14&lt;/sys_created_on&gt;&lt;sys_id&gt;e3a3797e414c1550f877fdd676e404dd&lt;/sys_id&gt;&lt;sys_mod_count&gt;2&lt;/sys_mod_count&gt;&lt;sys_name&gt;Restaurant Queue&lt;/sys_name&gt;&lt;sys_package display_value="Restaurant Management" source="x_snc_restaurant_m"&gt;f9aae16741730910f877fdd676e404cf&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Restaurant Management"&gt;f9aae16741730910f877fdd676e404cf&lt;/sys_scope&gt;&lt;sys_update_name&gt;awa_queue_e3a3797e414c1550f877fdd676e404dd&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2022-06-16 15:05:44&lt;/sys_updated_on&gt;&lt;target_wait_time/&gt;&lt;use_condition&gt;true&lt;/use_condition&gt;&lt;/awa_queue&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>80041494</payload_hash>
+        <record_name>Restaurant Queue</record_name>
+        <reverted_from/>
+        <source>bdaae16741730910f877fdd676e404d1</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-06-16 15:05:44</sys_created_on>
+        <sys_id>a53b8ebe418c1550f877fdd676e40445</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1816d0c80530000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-06-16 15:05:44</sys_updated_on>
+        <type>Queue</type>
+        <update_guid>ed3b8ebe7c8c15508c875fb69b52b044</update_guid>
+        <update_guid_history>ed3b8ebe7c8c15508c875fb69b52b044:80041494,e91471be464c1550f33579055483be8a:-482100101,48c3f97e7b4c15501be3f6cb0730d343:1849168916</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Restaurant Queue">cc09011b10081110f877e0283ffbcd83</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-06-17 23:33:25</sys_created_on>
+        <sys_db_object display_value="" name="awa_queue">awa_queue</sys_db_object>
+        <sys_id>097922d9558c43008344bd9b95344400</sys_id>
+        <sys_metadata>e3a3797e414c1550f877fdd676e404dd</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Restaurant Queue</sys_name>
+        <sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</sys_scope>
+        <sys_scope_delete display_value="">2fc304b5326340dba29f505a63b222c1</sys_scope_delete>
+        <sys_update_name>awa_queue_e3a3797e414c1550f877fdd676e404dd</sys_update_name>
+        <sys_update_version display_value="awa_queue_e3a3797e414c1550f877fdd676e404dd">a53b8ebe418c1550f877fdd676e40445</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+    </sys_metadata_delete>
+</record_update>

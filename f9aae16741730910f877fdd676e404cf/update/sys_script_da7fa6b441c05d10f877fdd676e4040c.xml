@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>true</action_insert>
+        <action_query>false</action_query>
+        <action_update>false</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>x_snc_restaurant_m_bookings</collection>
+        <condition/>
+        <description/>
+        <execute_function>false</execute_function>
+        <filter_condition/>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>Book a table</name>
+        <order>100</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
+	var bookings = new GlideRecord("x_snc_restaurant_m_bookings");
+	bookings.addQuery("customer.sys_id", current.sys_id);
+	bookings.addQuery("status", "active");
+	bookings.query();
+	if (bookings.next()) {
+		gs.addErrorMessage('User already has a booking');
+		current.setAbortAction(true);
+		return;
+	}
+	var tables = new GlideRecord("x_snc_restaurant_m_dining_table");
+	tables.addQuery("occupied", "false");
+	tables.query();
+	if (!tables.next()) {
+		gs.addErrorMessage("No tables available");
+		current.setAbortAction(true);
+		return;
+	}
+
+	bookings = new GlideRecord("x_snc_restaurant_m_bookings");
+	bookings.addQuery("status", "active");
+
+	tables.setValue("occupied", "true");
+	tables.update();
+	current.setValue("status", "active");
+	current.table = tables.sys_id;
+
+})(current, previous);]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-06-10 12:39:19</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>da7fa6b441c05d10f877fdd676e4040c</sys_id>
+        <sys_mod_count>24</sys_mod_count>
+        <sys_name>Book a table</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</sys_scope>
+        <sys_update_name>sys_script_da7fa6b441c05d10f877fdd676e4040c</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <template/>
+        <when>before</when>
+    </sys_script>
+    <sys_translated_text action="delete_multiple" query="documentkey=da7fa6b441c05d10f877fdd676e4040c"/>
+</record_update>

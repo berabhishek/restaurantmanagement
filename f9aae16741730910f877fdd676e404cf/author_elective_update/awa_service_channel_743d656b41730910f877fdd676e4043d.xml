@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="awa_service_channel">
+    <awa_service_channel action="DELETE">
+        <active>false</active>
+        <advanced_condition>false</advanced_condition>
+        <assign_to_field>assigned_to</assign_to_field>
+        <assignment_group_field>assignment_group</assignment_group_field>
+        <condition/>
+        <default_capacity>1</default_capacity>
+        <default_size>1</default_size>
+        <description/>
+        <enable_logging>true</enable_logging>
+        <inbox_alert_audio/>
+        <log_level>verbose</log_level>
+        <message_alert_audio/>
+        <name>Cooking Channel</name>
+        <order>100</order>
+        <stop_logging_at>2022-06-09 11:05:13</stop_logging_at>
+        <stop_logging_schedule display_value="AWA log 743d656b41730910f877fdd676e4043d">4b6d692b41730910f877fdd676e404f4</stop_logging_schedule>
+        <sys_class_name>awa_service_channel</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-06-06 10:35:19</sys_created_on>
+        <sys_id>743d656b41730910f877fdd676e4043d</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Cooking Channel</sys_name>
+        <sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</sys_scope>
+        <sys_update_name>awa_service_channel_743d656b41730910f877fdd676e4043d</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-06-06 10:35:19</sys_updated_on>
+        <type/>
+        <utilization_condition/>
+        <workitem_table>x_snc_restaurant_m_order_item_task</workitem_table>
+    </awa_service_channel>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</application>
+        <file_path/>
+        <instance_id>c0b26ae9f0330110f87765368869fbdd</instance_id>
+        <instance_name>instance</instance_name>
+        <name>awa_service_channel_743d656b41730910f877fdd676e4043d</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="awa_service_channel"><awa_service_channel action="INSERT_OR_UPDATE"><active>false</active><advanced_condition>false</advanced_condition><assign_to_field>assigned_to</assign_to_field><assignment_group_field>assignment_group</assignment_group_field><condition/><default_capacity>1</default_capacity><default_size>1</default_size><description/><enable_logging>true</enable_logging><inbox_alert_audio/><log_level>verbose</log_level><message_alert_audio/><name>Cooking Channel</name><order>100</order><stop_logging_at>2022-06-09 11:05:13</stop_logging_at><stop_logging_schedule display_value="AWA log 743d656b41730910f877fdd676e4043d">4b6d692b41730910f877fdd676e404f4</stop_logging_schedule><sys_class_name>awa_service_channel</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2022-06-06 10:35:19</sys_created_on><sys_id>743d656b41730910f877fdd676e4043d</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Cooking Channel</sys_name><sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package><sys_policy/><sys_scope display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</sys_scope><sys_update_name>awa_service_channel_743d656b41730910f877fdd676e4043d</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2022-06-06 10:35:19</sys_updated_on><type/><utilization_condition/><workitem_table>x_snc_restaurant_m_order_item_task</workitem_table></awa_service_channel></record_update>]]></payload>
+        <payload_hash>1965711837</payload_hash>
+        <record_name>Cooking Channel</record_name>
+        <reverted_from/>
+        <source>bdaae16741730910f877fdd676e404d1</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-06-06 10:35:20</sys_created_on>
+        <sys_id>cf6d296b41730910f877fdd676e404f3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1813895573a0000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-06-06 10:35:20</sys_updated_on>
+        <type>Service Channel</type>
+        <update_guid>0b6d296bc3730910cef81f4142ef8bf3</update_guid>
+        <update_guid_history>0b6d296bc3730910cef81f4142ef8bf3:1965711837</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Cooking Channel">3b50356f41730910f877fdd676e40462</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-06-06 10:48:13</sys_created_on>
+        <sys_db_object display_value="" name="awa_service_channel">awa_service_channel</sys_db_object>
+        <sys_id>29f5aa7f5db24d4886be7a166d0e5840</sys_id>
+        <sys_metadata>743d656b41730910f877fdd676e4043d</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Cooking Channel</sys_name>
+        <sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</sys_scope>
+        <sys_scope_delete display_value="">2fc304b5326340dba29f505a63b222c1</sys_scope_delete>
+        <sys_update_name>awa_service_channel_743d656b41730910f877fdd676e4043d</sys_update_name>
+        <sys_update_version display_value="awa_service_channel_743d656b41730910f877fdd676e4043d">cf6d296b41730910f877fdd676e404f3</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+    </sys_metadata_delete>
+</record_update>

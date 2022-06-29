@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_view">
+    <sys_ui_view action="INSERT_OR_UPDATE">
+        <group/>
+        <hidden>false</hidden>
+        <name>workspace_view</name>
+        <roles/>
+        <sys_class_name>sys_ui_view</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-06-13 07:43:36</sys_created_on>
+        <sys_id>3339497541c81150f877fdd676e40412</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>workspace view</sys_name>
+        <sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</sys_scope>
+        <sys_update_name>sys_ui_view_3339497541c81150f877fdd676e40412</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <title>workspace view</title>
+        <user/>
+    </sys_ui_view>
+</record_update>

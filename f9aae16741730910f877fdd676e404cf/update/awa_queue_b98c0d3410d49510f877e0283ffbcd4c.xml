@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="awa_queue">
+    <awa_queue action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <average_wait_time>1970-01-01 00:00:00</average_wait_time>
+        <condition/>
+        <condition_mode>simple</condition_mode>
+        <condition_script><![CDATA[(function executeCondition(/* glide record */ current) {  
+	// customize condition logic here, return true or false  
+	return false;
+})(current);]]></condition_script>
+        <evaluation_scope>document</evaluation_scope>
+        <external>false</external>
+        <external_id/>
+        <initial_agent_response>Thank you for contacting support. I am looking into your question now and will be with you shortly.</initial_agent_response>
+        <max_wait_time/>
+        <max_wait_time_message>No agents are available to chat right now. Check back later.</max_wait_time_message>
+        <name>Cashier Queue</name>
+        <number>QUE00013</number>
+        <order>100</order>
+        <schedule display_value="24 x 7">38fa64edc0a8016400f4a5724b0434b8</schedule>
+        <service_channel display_value="Restaurant Cashier Channel">d77155b810d49510f877e0283ffbcd52</service_channel>
+        <short_description/>
+        <subflow/>
+        <sys_class_name>awa_queue</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-06-22 15:40:36</sys_created_on>
+        <sys_id>b98c0d3410d49510f877e0283ffbcd4c</sys_id>
+        <sys_mod_count>10</sys_mod_count>
+        <sys_name>Cashier Queue</sys_name>
+        <sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</sys_scope>
+        <sys_update_name>awa_queue_b98c0d3410d49510f877e0283ffbcd4c</sys_update_name>
+        <sys_updated_by>system</sys_updated_by>
+        <target_wait_time/>
+        <use_condition>true</use_condition>
+    </awa_queue>
+</record_update>

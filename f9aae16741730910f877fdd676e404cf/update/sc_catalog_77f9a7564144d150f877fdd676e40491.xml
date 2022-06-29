@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sc_catalog">
+    <sc_catalog action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <background_color>white</background_color>
+        <description>Restaurant Management System</description>
+        <desktop_continue_shopping/>
+        <desktop_home_page>restaurant</desktop_home_page>
+        <desktop_image/>
+        <editors/>
+        <enable_wish_list>false</enable_wish_list>
+        <manager display_value="Fred Luddy">5137153cc611227c000bbd1bd8cd2005</manager>
+        <sys_class_name>sc_catalog</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-06-15 08:43:17</sys_created_on>
+        <sys_id>77f9a7564144d150f877fdd676e40491</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>Restaurant Management Catalog</sys_name>
+        <sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</sys_scope>
+        <sys_update_name>sc_catalog_77f9a7564144d150f877fdd676e40491</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <title>Restaurant Management Catalog</title>
+    </sc_catalog>
+    <sys_translated_text action="delete_multiple" query="documentkey=77f9a7564144d150f877fdd676e40491"/>
+</record_update>

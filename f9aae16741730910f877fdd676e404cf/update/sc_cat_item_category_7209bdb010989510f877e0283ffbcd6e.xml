@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sc_cat_item_category">
+    <sc_cat_item_category action="INSERT_OR_UPDATE">
+        <sc_cat_item display_value="Cream and Onion Soup">5ee8317010989510f877e0283ffbcd8c</sc_cat_item>
+        <sc_category display_value="Soups">d39875b010989510f877e0283ffbcd66</sc_category>
+        <sys_class_name>sc_cat_item_category</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-06-22 18:54:13</sys_created_on>
+        <sys_id>7209bdb010989510f877e0283ffbcd6e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Soups.Cream and Onion Soup</sys_name>
+        <sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</sys_scope>
+        <sys_update_name>sc_cat_item_category_7209bdb010989510f877e0283ffbcd6e</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+    </sc_cat_item_category>
+</record_update>

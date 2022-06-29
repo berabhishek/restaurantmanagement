@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="009e4eae4d109510f87791a4a837f38f" label="User Feedback" max_length="40" name="x_snc_restaurant_m_user_feedback" type="collection">
+        <element choice="1" label="Ambience" max_length="40" name="ambience" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Extremely Good" sequence="0" value="5"/>
+                <element inactive_on_update="false" label="Good" sequence="1" value="4"/>
+                <element inactive_on_update="false" label="Average" sequence="2" value="3"/>
+                <element inactive_on_update="false" label="Poor" sequence="3" value="2"/>
+                <element inactive_on_update="false" label="Extremely Poor" sequence="4" value="1"/>
+            </choice>
+        </element>
+        <element label="Booking" max_length="32" name="booking" reference="x_snc_restaurant_m_bookings" type="reference"/>
+        <element choice="1" label="Food" max_length="40" name="food" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Extremely Good" sequence="0" value="5"/>
+                <element inactive_on_update="false" label="Good" sequence="1" value="4"/>
+                <element inactive_on_update="false" label="Average" sequence="2" value="3"/>
+                <element inactive_on_update="false" label="Poor" sequence="3" value="2"/>
+                <element inactive_on_update="false" label="Extremely Poor" sequence="4" value="1"/>
+            </choice>
+        </element>
+        <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
+        <element choice="1" label="Overall" max_length="40" name="overall" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Extremely Good" sequence="0" value="5"/>
+                <element inactive_on_update="false" label="Good" sequence="1" value="4"/>
+                <element inactive_on_update="false" label="Average" sequence="2" value="3"/>
+                <element inactive_on_update="false" label="Poor" sequence="3" value="2"/>
+                <element inactive_on_update="false" label="Extremely Poor" sequence="4" value="1"/>
+            </choice>
+        </element>
+        <element choice="1" label="Staff" max_length="40" name="staff" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Extremely Good" sequence="0" value="5"/>
+                <element inactive_on_update="false" label="Good" sequence="1" value="4"/>
+                <element inactive_on_update="false" label="Average" sequence="2" value="3"/>
+                <element inactive_on_update="false" label="Poor" sequence="3" value="2"/>
+                <element inactive_on_update="false" label="Extremely Poor" sequence="4" value="1"/>
+            </choice>
+        </element>
+        <index name="index">
+            <element name="booking"/>
+        </index>
+    </element>
+</database>

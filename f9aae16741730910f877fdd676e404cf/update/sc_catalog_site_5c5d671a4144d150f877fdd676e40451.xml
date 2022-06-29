@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sc_catalog_site">
+    <sc_catalog_site action="INSERT_OR_UPDATE">
+        <cms_continue_shopping/>
+        <cms_home>restaurant</cms_home>
+        <cms_search>restaurant</cms_search>
+        <content_site/>
+        <sc_catalog display_value="Restaurant Management Catalog">77f9a7564144d150f877fdd676e40491</sc_catalog>
+        <sys_class_name>sc_catalog_site</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-06-15 08:57:37</sys_created_on>
+        <sys_id>5c5d671a4144d150f877fdd676e40451</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>.Restaurant Management Catalog</sys_name>
+        <sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</sys_scope>
+        <sys_update_name>sc_catalog_site_5c5d671a4144d150f877fdd676e40451</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+    </sc_catalog_site>
+</record_update>

@@ -1,0 +1,1603 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function($scope, $q, $rootScope, $http, spUtil) {
+	/* widget controller */
+	/*var c = this;
+	c.calendarRanges = [];
+	c.slotsByDays = {};
+	c.fetchingAppointments = false;
+	c.activeSlotIdx = '';
+	c.selectedWindow = {};
+	var isInitialLoad = true;
+
+	c.todayDate = getDateInUserTz();
+	c.minDate =  {
+		date: c.todayDate.getDate(),
+		day: c.todayDate.getDay(),
+		month: c.todayDate.getMonth(),
+		year: c.todayDate.getFullYear()
+	};
+	
+	function bootCalendarDates(date) {
+		c.selectedDate = date;
+		c.selectedDay = date.getDate();
+		c.selectedMonth = date.getMonth();
+
+		if(isInitialLoad){
+			c.calenderDays = populateDaysOfMonth();
+			isInitialLoad = false;
+		}
+		var weekDays = c.selectedCurrentWeek;
+		var weekStartDate = new Date(c.selectedDate), weekEndDate = new Date(c.selectedDate);
+
+		for(var weekDate in weekDays){
+			if(weekDays[weekDate]){
+				weekStartDate.setDate(weekDays[weekDate]);
+				break;
+			}
+		}
+		weekEndDate.setDate(weekDays[weekDays.length - 1]);
+
+		c.week = {
+			start: weekStartDate,
+			end: weekEndDate
+		};
+
+		if (c.week.start)
+			c.startOfWeekInyyyymmdd =  utils.getDateInyyyymmdd(c.week.start);
+		if (c.week.end)
+			c.endOfWeekInyyyymmdd =  utils.getDateInyyyymmdd(c.week.end);
+
+		c.activeDate = utils.getDateInyyyymmdd(date);
+
+		// populate week data
+		c.calendarRanges = utils.getAllDatesInRange(c.week.start, c.week.end);
+	}
+
+	// init the app
+	function initApp(date, fetchNextAvailableSlot) {
+		if(!isInitialLoad)
+			bootCalendarDates(date);
+
+		processScheduledAppointment();
+		var startEndDay = utils.getStartEndDatesOfDay(date);
+
+		if (!c.data.config.ruleId && c.data.config.service_config.enable_advanced_config) {
+			fetchCofigRule(c.data.config.catalogId, c.data.config.taskId, JSON.stringify(c.data.config.otherInputs)).then(
+				function (response) {
+					c.ruleId = response.data.result.ruleId;
+					c.ruleFutureMaxBookableDays = response.data.result.futureMaxBookableDays;
+					if (c.ruleFutureMaxBookableDays) {
+						c.maxBookableDate = getDateInUserTz();
+						c.maxBookableDate.setDate(getDateInUserTz().getDate() + parseInt(c.ruleFutureMaxBookableDays));
+					}
+					var startEndDay = utils.getStartEndDatesOfDay(date);
+					fetchAppointments(startEndDay.start, startEndDay.end, fetchNextAvailableSlot);
+				}
+			);
+		} else {
+			if (c.data.config.service_config.enable_advanced_config)
+				c.ruleId = c.data.config && c.data.config.ruleId || null;
+			fetchAppointments(startEndDay.start, startEndDay.end, fetchNextAvailableSlot);
+		}
+	}
+
+	c.isNextMonthDisabled = function(){
+		if(c.maxBookableDate.getYear() == c.selectedDate.getYear()){
+			if(c.selectedMonth == c.maxBookableDate.getMonth()){
+				return true;
+			} else if(c.selectedMonth + 1 == c.maxBookableDate.getMonth()){
+				if(c.maxBookableDate.getDate() == 1)
+					return true;
+			}
+		}
+		return false;
+	}
+
+	c.getCalenderDateLabel = function(date){
+		return c.config.translations.months[c.selectedMonth] + ' ' + date + ', ' + c.selectedDate.getFullYear();
+	}
+
+	c.isDayDisabled = function(date){
+		var tempDate = new Date(c.selectedDate);
+		tempDate.setDate(date);
+		
+		return checkDisabledDate(tempDate);
+	}
+
+	c.updateDate = function($event){
+		var tableElement = $event.target.parentElement.parentElement.parentElement;
+		var key = $event.which;
+		var newDate = parseInt($event.target.getAttribute('data-date'));
+		var tempDate = new Date(c.selectedDate);
+		tempDate.setDate(newDate);
+		var initialMonth = tempDate.getMonth();
+
+		switch(key){
+			case 37: --newDate; break;
+			case 39: ++newDate; break;
+			case 38: newDate -= 7; break;
+			case 40: newDate += + 7; break;
+			default: return;
+		}
+
+		tempDate.setDate(newDate);
+		if(checkDisabledDate(tempDate))
+			return;
+
+		if(initialMonth != tempDate.getMonth()){
+			changeMonth(tempDate.getMonth(), tempDate.getFullYear());
+		}
+		c.focusedDate = tempDate.getDate();
+		setTimeout(function(){
+			var elm = tableElement.querySelector('#day_' + tempDate.getDate());
+			elm.focus();
+		},100);
+	}
+
+	c.changeDate = function(date, week){
+		c.slotDuration = null;
+		if(date == c.selectedDay)
+			return;
+
+		c.selectedDate.setDate(date);
+		c.selectedDay = c.selectedDate.getDate();
+		c.selectedMonth = c.selectedDate.getMonth();
+		c.calenderDays.forEach(function(week){
+			week.selected = false;
+		});
+		week.selected = true;
+
+		c.selectedCurrentWeek = week.days;
+		c.jumptToDate(c.selectedDate);
+	}
+
+	c.updateMonth = function(i){
+		var newMonth = c.selectedDate.getMonth() + i;
+		changeMonth(newMonth);
+	}
+
+	function checkDisabledDate(date){
+		if((date.getTime() >= c.todayDate.getTime()) && (date.getTime() <= c.maxBookableDate.getTime()))
+			return false;
+		return true;
+	}
+
+	function changeMonth(newMonth, year){
+		var newDate = 1;
+		c.selectedDate.setDate(newDate);
+		c.selectedDate.setMonth(newMonth);
+		
+		var currentYear = year || c.selectedDate.getFullYear();
+		if((newMonth == c.minDate.month) && (currentYear == c.minDate.year)){
+			newDate = c.minDate.date;
+		}
+		c.selectedDay = newDate;
+		c.selectedDate.setDate(newDate);
+		c.selectedMonth = c.selectedDate.getMonth();
+		c.selectedDate.setFullYear(currentYear);
+		
+		c.calenderDays = populateDaysOfMonth();
+		c.jumptToDate(c.selectedDate);
+	}
+
+	function setMonth(newMonth){
+		c.selectedDate.setMonth(newMonth);
+		c.selectedMonth = c.selectedDate.getMonth();
+		c.calenderDays = populateDaysOfMonth();
+	}
+
+	function populateDaysOfMonth() {
+		var day = c.selectedDate.getDay();
+		var date = c.selectedDate.getDate();
+
+		var weekList = [{
+			selected: false,
+			full:false,
+			days: []
+		}];
+		var startDay = new Date(c.selectedDate);
+		startDay.setDate(1);
+
+		while(startDay.getMonth() == c.selectedDate.getMonth()){
+			var week = weekList[weekList.length - 1];
+			if(week.full){
+				week = {
+					selected: false,
+					full:false,
+					days: []
+				};
+				weekList.push(week);
+			}
+			if(date === startDay.getDate()){
+				week.selected = true;
+				c.selectedCurrentWeek = week.days;
+			}
+
+			var dayInWeek = startDay.getDay() - 1;
+			if(dayInWeek == -1){
+				dayInWeek = 6;
+			}
+			if(dayInWeek == 6){
+				week.full = true;
+			}
+
+			week.days[dayInWeek] = startDay.getDate();
+			startDay.setDate(startDay.getDate() + 1);
+		}
+		return weekList;
+	}
+	
+	function fetchCofigRule(catalogId, taskId, otherInputs) {
+		var apiBaseUrl = '/api/sn_apptmnt_booking/v1/appointment';
+		var conditionUrl = '/execute_rule_conditions';
+
+		var payload = {
+				catalogId: catalogId,
+				taskId: taskId,
+				otherInputs: otherInputs
+		};
+		return $http.post(apiBaseUrl + conditionUrl, payload);
+	}
+
+	function fetchAppointments(start,end, fetchNextAvailableSlot) {
+		startLoading();	
+		
+		var strStart = start.getYear() + 1900 + "";
+		var month = start.getMonth() + 1;
+		strStart = strStart + "-" + (month.toString().length == 1 ? "0" + month : month );
+		var startDate = start.getDate();
+		strStart = strStart + "-" + (startDate.toString().length == 1 ? "0" + startDate : startDate );
+
+		var isoStart = strStart + " 00:00:00";
+
+		var startTz = moment.tz(isoStart, spUtil.getMomentTimeZone(c.data.uiRenderTz));
+
+		var isoEnd = strStart + " 23:59:59";
+		var endTz = moment.tz(isoEnd, spUtil.getMomentTimeZone(c.data.uiRenderTz));
+			
+		utils.getAppointments(startTz.toISOString(), endTz.toISOString(), c.data.config, fetchNextAvailableSlot).then(
+			function (response) {
+				endLoading();
+				processAppointmentWindows(response);
+
+				var startOfWeek = utils.reformatDate(c.startOfWeekInyyyymmdd+" "+c.CONSTANTS.DEFAULT_TIME, c.localeLanguage, c.dateFormatOptionsOfDateRangInWeekView);
+				var endOfWeek = utils.reformatDate(c.endOfWeekInyyyymmdd+" "+c.CONSTANTS.DEFAULT_TIME, c.localeLanguage, c.dateFormatOptionsOfDateRangInWeekView);
+
+				c.reformatedSelectedDate = startOfWeek + ' - ' + endOfWeek;
+				c.localizedSelectedWindow.startOfWeek = startOfWeek;
+				c.localizedSelectedWindow.endOfWeek = endOfWeek;
+
+				c.localizedSelectedWindow.time_zone_display_value = response.time_zone_display_value;
+			},
+			function(response){
+				// console.log("Appointment Booking - failed to get response using getAppointments");
+				c.showErrorMessage = true;
+				c.errorMsg = response.data.error.message;
+				endLoading();
+			}
+		);
+	}
+
+	
+	function handleNextAvailableSlot(window) {
+		var startDate = window.start_date;
+
+		// we need to check if this startDate falls b/w or the out of calendar range
+		// adjust the calendar ranges and active date accordingly.
+		var isStartDateWithinRange = utils.isDateWithinRange(startDate);
+
+		// if within range, set the active date to that available day
+		if (isStartDateWithinRange) {
+			setActiveDate(new Date(startDate));
+			return;
+		}
+
+		// init the app with the new start date which will get current week and fetch appointments
+		bootCalendarDates(new Date(startDate));
+	}
+
+	function processScheduledAppointment() {
+		var scheduledAppointment = c.config.scheduled_appointment;
+		if (!scheduledAppointment || !scheduledAppointment.start || !scheduledAppointment.end) {
+			c.hasValidScheduledAppointment = false;
+			return;
+		}
+		scheduledAppointment.startDateObj = utils.stringToDate(scheduledAppointment.start);
+		scheduledAppointment.endDateObj = utils.stringToDate(scheduledAppointment.end);
+
+		c.hasValidScheduledAppointment = true;
+		c.scheduledAppointment = scheduledAppointment;
+
+	}
+
+	function processAppointmentWindows(response) {
+		// clear the previous fetched slots if any
+		c.selectedWindow = {};
+		c.slotsByDays = {};
+
+		// if the server failed to identify any slots in the range asked by client
+		// server send "next_available_slot", if this is sent, we need to handle the new
+		// date range sent by the server.
+		
+		c.time_zone_display_value = response.time_zone_display_value;
+
+		if (response.next_available_slot) {
+			bootCalendarDates(utils.stringToDate(response.next_available_day_data[0].start_date));
+		} else if(isInitialLoad){
+			bootCalendarDates(getDateInUserTz());
+		}
+		
+		// TODO: Check if we need to handle when there is no availibity
+		if (!response || ((!response.availability || response.availability.length == 0 || response.no_appt_available) && (!response.next_available_slot))) {
+			return;
+		}
+
+		// slot the available slots in the each calendar range slot
+		var appWindows = response.next_available_slot ? response.next_available_day_data : response.availability;
+		var weekStartNum = Date.parse(utils.stringToDate(c.startOfWeekInyyyymmdd + " 00:00:00"));
+		var weekEndNum = Date.parse(utils.stringToDate(c.endOfWeekInyyyymmdd + " 23:59:59"));
+
+		for (var i = 0; i < appWindows.length; i++) {
+			if (appWindows[i]) {
+				var window = appWindows[i];
+				var actualWindow = {};
+				if (window && window.start_date) {
+					var start = window.start_date.split(' ');
+					var startNum = Date.parse(utils.stringToDate(window.start_date));
+
+					// if appointment not available, skip it
+					if (!window.available)
+						continue;
+
+					// if previous week day included in the response - ignore
+					if (startNum < weekStartNum)
+						continue;
+					// if next week day included in the response - ignore
+					if (startNum > weekEndNum)
+						continue;
+
+					// build window object as needed by other consumer widgets
+					actualWindow.start = window.start_date_display;
+					actualWindow.end = window.end_date_display;
+					actualWindow.available = window.available;
+					// actual values
+					actualWindow.actualStart = window.start_date;
+					actualWindow.actualEnd = window.end_date;
+
+					actualWindow.actualStartUTC = window.start_dateUTC;
+					actualWindow.actualEndUTC = window.end_dateUTC;
+					actualWindow.timezone = response.time_zone;
+					actualWindow.dayName = utils.dayNameTextForDayView(window.start_date);
+					actualWindow.reformatedSelectedDate = utils.reformatDate(window.start_date, c.localeLanguage, c.dateFormatOptionsInDayView);
+
+
+					// TODO: catagorise the slot to morning/afternoon/evening
+					buildAppointmentObj(actualWindow);
+				}
+			}
+		}
+	}
+
+	function buildAppointmentObj(window) {
+		var startDate = window.actualStart.split(' ')[0];
+		var timeSlot = utils.getTimeSlotFromDate(utils.stringToDate(window.actualStart));
+
+		c.slotsByDays[startDate] = c.slotsByDays[startDate] || {};
+		var existingSlotsForDay = c.slotsByDays[startDate];
+		existingSlotsForDay.actualCountAvailable = existingSlotsForDay.actualCountAvailable || {};
+		existingSlotsForDay.actualCountAvailable[timeSlot] = existingSlotsForDay.actualCountAvailable[timeSlot] || 0;
+		existingSlotsForDay[timeSlot] = existingSlotsForDay[timeSlot] || [];
+		existingSlotsForDay.actual = existingSlotsForDay.actual || [];
+		existingSlotsForDay.showMoreOrLess = existingSlotsForDay.showMoreOrLess || {};
+		existingSlotsForDay.showMoreOrLess[timeSlot] = existingSlotsForDay.showMoreOrLess[timeSlot] || false;
+
+		existingSlotsForDay[timeSlot].push(window);
+
+
+		if (window && window.available) {
+			existingSlotsForDay.actualCountAvailable[timeSlot]++;
+			existingSlotsForDay.actual.push(window);
+		}
+
+		// check if there is a already a scheduled appointment at this window
+		if (!c.hasValidScheduledAppointment) return;
+		window.scheduled =  c.scheduledAppointment.start == window.actualStart;
+		
+	}
+	
+	function setActiveDate(d) {
+		var dateInyyymmdd = utils.getDateInyyyymmdd(d);
+		c.activeDate = dateInyyymmdd;
+
+		c.selectedDay = d.getDate();
+		c.selectedDate = d;
+	}
+
+	c.setActiveDateAndFetchAppointments = function(d) {
+		c.slotDuration = null;
+		setActiveDate(d);
+		
+		// clear fetched slots and selected slot on previous selected day
+		c.slotsByDays = {};
+		c.selectedWindow = {};
+		var startEndDay = utils.getStartEndDatesOfDay(d);
+		fetchAppointments(startEndDay.start, startEndDay.end);
+	}
+
+	function startLoading() {
+		c.fetchingAppointments = true;
+		jQuery("#spinner").show();
+	}
+
+	function endLoading() {
+		c.fetchingAppointments = false;
+		jQuery("#spinner").hide();
+	}
+
+	c.selectActiveSlot =  function(window, index) {
+		c.slotDuration = c.getSlotDuration(window.actualStart, window.actualEnd);			
+		c.slotInterval = utils.format(c.data.currentInterval, c.slotDuration);
+		
+		c.selectedWindow = window;
+		c.confirmationMsgString = utils.format(c.data.confirmationMessage, window.reformatedSelectedDate, window.start);
+		
+		if(c.data.hide_modal_buttons)
+			$rootScope.$broadcast('appt.booking.selected.slot', {
+				selectedWindow: window,
+				config: c.config
+			});
+	}
+		
+	c.getSlotText = function(slots) {
+		var text = "";
+		if (slots > 1)
+			text = utils.format(c.data.slotsText, slots);
+		else
+			text = utils.format(c.data.slotText, slots);
+		return text;
+	}
+
+	c.submitBtnClick = function () {
+		if (c.selectedWindow) {
+			var selectedWindow = c.selectedWindow;
+			selectedWindow.localizedSelectedWindow = c.localizedSelectedWindow;
+
+			var localizedSelectedWindow = utils.localizeSelectedWindow(selectedWindow, c.config.locale_language, c.dateFormatOptionsInDayView, c.timeFormatOptions);
+			selectedWindow.localizedSelectedWindow = Object.assign({}, selectedWindow.localizedSelectedWindow, localizedSelectedWindow);
+			var taskId;
+			if(c.data.config.taskId)	
+				taskId =  c.data.config.taskId;
+
+			$rootScope.$broadcast("appt.booking.selected.window", { selectedWindow: selectedWindow , taskId:taskId, ruleId: c.ruleId});
+			$rootScope.modalInstanceForAppointmentBooking.close();
+		}
+	};
+
+	c.cancelBtnClick = function() {
+		$rootScope.modalInstanceForAppointmentBooking.close();
+	}
+
+	jQuery(document).keyup(function(e){
+		c.documentEvent = e;
+	});
+
+	//If try to go backward tab from first element i.e. forward/backward buttons, then focus on the last element of widget.
+	c.handleFistFocussableElement = function(){
+		// if the user came here using SHIFT + TAB(backward tabs) then take him to footer actions
+		if(c.documentEvent && c.documentEvent.shiftKey && c.documentEvent.keyCode == 9) { 
+			document.querySelector('.modal-header button').focus();
+		} else {
+			if(!jQuery("#goPrevious").prop('disabled'))
+				jQuery('#goPrevious').focus();
+			else
+				jQuery('#goNext').focus();
+		}
+	};
+
+
+	//Trap focus in appointment booking containiner. 
+	//If try to go forward tab from last element i.e. submit/cancel button, then focus on the first element of widget.
+	c.handleLastFocussableElement =  function(){
+		if(c.documentEvent && c.documentEvent.shiftKey && c.documentEvent.keyCode == 9) {
+			if(!jQuery("#submitBtn").prop('disabled'))
+					jQuery('#submitBtn').focus();
+			else
+				jQuery('#submitBtn').prev().focus();
+		} else {
+			document.querySelector('.modal-header button').focus();	
+		}
+	};
+
+	c.jumptToDate =  function(day) {
+		var isStartDateWithinRange = utils.isDateWithinRange(day);
+
+		// if within range, set the active date to that available day
+		if (isStartDateWithinRange) {
+			c.setActiveDateAndFetchAppointments(new Date(day));
+			return;
+		}
+
+		c.slotsByDays = {};
+		// init the app with the new start date which will get current week and fetch appointments
+		initApp(day);
+	}
+
+	c.shouldShowSeeMoreLess = function(key) {
+		var isSlotPresent = c.slotsByDays[c.activeDate] &&  c.slotsByDays[c.activeDate][key];
+		if (!isSlotPresent || (isSlotPresent && isSlotPresent.length <= c.CONSTANTS.MAX_LIMIT_FOR_SEE_MORE )) return false;		
+		return true;
+	}
+
+	c.toggleShowMoreLess = function(key) {
+		c.slotsByDays[c.activeDate].showMoreOrLess[key] = !c.slotsByDays[c.activeDate].showMoreOrLess[key];
+	}
+
+	c.getSlicedSlots = function(key) {
+		var slots = c.slotsByDays[c.activeDate][key];
+		if (!c.shouldShowSeeMoreLess(key)) return slots;
+
+		// slice it or return full result
+		return c.slotsByDays[c.activeDate].showMoreOrLess[key] ? slots : slots.slice(0, c.CONSTANTS.MAX_LIMIT_FOR_SEE_MORE);	
+	}
+
+	c.getSeeOrMoreText = function(key) {
+		if (!c.slotsByDays[c.activeDate] || !c.slotsByDays[c.activeDate].showMoreOrLess)
+			return '';
+		var isExpanded = c.slotsByDays[c.activeDate].showMoreOrLess[key];
+		return isExpanded ? c.data.showLess : c.data.showAll;
+	}
+	
+	c.getSeeOrMoreAriaLabelText = function(key) {
+		if (!c.slotsByDays[c.activeDate] || !c.slotsByDays[c.activeDate].showMoreOrLess)
+			return '';
+		var isExpanded = c.slotsByDays[c.activeDate].showMoreOrLess[key];
+		var textKey = isExpanded ? "showLess" + key : "showAll" + key;
+		return c.data[textKey];
+	}
+
+	function configUI() {
+		var ls = document.createElement('link');
+		ls.rel="stylesheet";
+		ls.href= "styles/sn_appointment_booking_availibility_portal.css";
+		document.getElementsByTagName('head')[0].appendChild(ls);
+	}
+
+	function initConfig() {
+		configUI();
+		var translationTextList = c.config.translations;
+		c.submitBtnText = translationTextList.submit_btn_text;
+		c.cancelBtnText = translationTextList.cancel_btn_text;
+		c.noAppointmentTextInDayColumn = translationTextList.no_appointment;
+		c.morning = c.data.morning;
+		c.afternoon = c.data.afternoon;
+		c.evening = c.data.evening;
+		c.timeDayMap = {};
+		c.timeDayMap[c.morning] = {};
+		c.timeDayMap[c.morning].icon = 'fa-sun-o';
+		c.scheduledSlotTextMessage = c.data.scheduledSlotMsg;
+		c.seeMore = c.data.showAll;
+		c.seeLess = c.data.showLess;
+		c.timeDayMap[c.afternoon] = {};
+		c.timeDayMap[c.afternoon].icon = 'fa-sun-o'
+		c.timeDayMap[c.evening] = {};
+		c.timeDayMap[c.evening].icon = 'fa-moon-o'
+		c.config.locale_language = c.config.locale_language == undefined ? "en-us" : c.config.locale_language;
+		c.dateFormatOptionsInDayView = c.config.userDateFormatOptions;
+		c.timeFormatOptions = c.config.userTimeFormatOptions;
+		if (c.timeFormatOptions)
+			c.timeFormatOptions.hour12 = c.config.userTimeFormat.type == "12hr";
+		c.localizedSelectedWindow = {};
+		c.dateFormatOptionsOfDateRangInWeekView = c.config.userDateFormatOptions;
+		c.CONSTANTS = {};
+		c.CONSTANTS.DEFAULT_TIME = "08:00:00";
+		c.localeLanguage = c.config.locale_language;
+		c.CONSTANTS.MAX_LIMIT_FOR_SEE_MORE = 10;
+		c.appointmentWIndowAriaLabelStartText = translationTextList.appointment_window_aria_label_start_text;
+		c.appWindowBtnTextEndTime = translationTextList.app_window_btn_text_end_time;
+		c.appWindowBtnTextStartTime = translationTextList.app_window_btn_text_start_time
+		c.maxBookableDate = getDateInUserTz();
+		
+		var futureMaxBookableDays;
+		if (c.data.config && c.data.config.ruleFutureMaxBookableDays && c.data.config.service_config && c.data.config.service_config.enable_advanced_config) {
+			futureMaxBookableDays = parseInt(c.data.config.ruleFutureMaxBookableDays);
+		} else {
+			futureMaxBookableDays = parseInt(c.config.service_config.future_bookable_max_days);
+		}
+		
+		c.maxBookableDate.setDate(c.maxBookableDate.getDate() + futureMaxBookableDays);
+		c.timezoneGroupTitle = translationTextList.time_zone + ": ";
+		c.scheduleSlotMsg = "Already selected slot";
+		c.slots = c.data.slotsText;
+		c.slot = c.data.slotText;
+		c.select_appointment_calendar_text = translationTextList.select_appointment_calendar_text;
+		c.weekDaysObjEng = [
+			{ day: "M", label: translationTextList.day_names[1]},
+			{ day: "T", label: translationTextList.day_names[2]},
+			{ day: "W", label: translationTextList.day_names[3]},
+			{ day: "T", label: translationTextList.day_names[4]},
+			{ day: "F", label: translationTextList.day_names[5]},
+			{ day: "S", label: translationTextList.day_names[6]},
+			{ day: "S", label: translationTextList.day_names[7]}
+		];
+		
+		c.weekDaysObjOtherLan = [
+			{ day: translationTextList.daysShort[1], label: translationTextList.day_names[1]},
+			{ day: translationTextList.daysShort[2], label: translationTextList.day_names[2]},
+			{ day: translationTextList.daysShort[3], label: translationTextList.day_names[3]},
+			{ day: translationTextList.daysShort[4], label: translationTextList.day_names[4]},
+			{ day: translationTextList.daysShort[5], label: translationTextList.day_names[5]},
+			{ day: translationTextList.daysShort[6], label: translationTextList.day_names[6]},
+			{ day: translationTextList.daysShort[0], label: translationTextList.day_names[7]}
+		];
+	}
+
+	// method that validates appointment booking config
+	function validateConfig(response) {
+		if (response && response.status == 200 && response.data) {
+			var result = response.data.result;
+			if (result && result.active) {
+				// checking parent config is active
+				var serviceConfig = result.service_config;
+				if (serviceConfig && serviceConfig.active)
+					return true;
+			}
+		}
+		return false;
+	}
+
+	// intialize the appt booking config
+	function initializeConfig() {
+		if (c.data.config) {
+			if (c.data.isConfigValid) {
+				c.isConfigValid = true;
+				c.config = c.data.config;
+				initConfig()
+				initApp(getDateInUserTz(), c.data.should_fetch_next_available_slot);
+			} else {
+				c.isConfigValid = false;
+				c.errorMsg = c.data.apptBookingTranslations.UI_UNKNOWN_ERROR_MESSAGE;
+				c.showErrorMessage = true;
+			}
+		} else {
+			c.isConfigValid = false;
+			c.errorMsg = c.data.apptBookingTranslations.UI_UNKNOWN_ERROR_MESSAGE;
+			c.showErrorMessage = true;
+		}
+	}
+	
+	c.checkIfMobileDevice = function (){
+		var isMobile = {
+			Android: function() { return navigator.userAgent.match(/Android/i); },
+			BlackBerry: function() { return navigator.userAgent.match(/BlackBerry/i); },
+			iOS: function() { return navigator.userAgent.match(/iPhone|iPad|iPod/i); },
+			Opera: function() { return navigator.userAgent.match(/Opera Mini/i); },
+			Windows: function() { return navigator.userAgent.match(/IEMobile/i); },
+			any: function() { return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows()); }
+		};
+		return isMobile.any() == null ? false : true;
+	}
+	
+	c.getSlotDuration = function(start, end){
+		var date_future = utils.stringToDate(end);
+		var date_now = utils.stringToDate(start);
+
+		var seconds = Math.floor((date_future - (date_now))/1000);
+		var minutes = Math.floor(seconds/60);
+		var hours = Math.floor(minutes/60);
+		var days = Math.floor(hours/24);
+
+		hours = hours-(days*24);
+		minutes = minutes-(days*24*60)-(hours*60);
+		seconds = seconds-(days*24*60*60)-(hours*60*60)-(minutes*60);
+		var durationText = "";
+		if (hours) {
+			durationText += hours;
+			durationText += " ";
+			if (hours > 1) durationText += c.data.hours;
+			else durationText += c.data.hour;
+		}
+		
+		if (minutes) {
+			durationText += " ";
+			durationText += minutes;
+			durationText += " ";
+			if (minutes > 1) durationText += c.data.minutes;
+			else durationText += c.data.minute;
+		}
+		
+		return durationText;
+	}
+	
+	function getDateInUserTz() {
+		var d = new Date();
+		// d.setHours(1,0,0,0);     // for testing
+		var m = moment(d).tz(spUtil.getMomentTimeZone(c.data.uiRenderTz));
+		var str = m.format("YYYY-MM-DD");
+		var n = new Date();
+		n.setYear(str.substring(0, 4));
+		n.setMonth(Number(str.substring(5, 7)) - 1);
+		n.setDate(str.substring(8, 10));
+		n.setHours(0, 0, 0, 0);
+		return n;
+	}
+
+	var utils = {
+		getAllDatesInRange: function(startDate, stopDate) {
+			var dateArray = new Array();
+			var currentDate = startDate;
+			while (currentDate <= stopDate) {
+				var res = {};
+				res.value = currentDate;
+				res.date = utils.getDateInyyyymmdd(currentDate);
+				res.displayValue = utils.getDateInMMMDD(currentDate);
+				res.active = startDate == currentDate;
+				res.reformatedSelectedDate = c.getCalenderDateLabel(currentDate.getDate());
+				dateArray.push(res);
+				currentDate = utils.addDays(currentDate, 1);
+			}
+			return dateArray;
+		},
+
+		getStartEndDatesOfDay: function(date) {
+			var start = new Date(date);
+			start.setHours(0,0,0,0);
+
+			var end = new Date(date);
+			end.setHours(23,59,59,999);
+
+			return {start: start, end: end };
+		},
+
+		getDateInMMMDD: function(dateVal) {
+			var monthNames = c.config.translations.monthsShort;
+
+			var d = new Date(dateVal),
+					month = monthNames[d.getMonth()],
+					day = '' + d.getDate();
+
+			return [month, day].join(' ');
+		},
+
+		addDays: function(date, days) {
+			var result = new Date(date);
+			result.setDate(result.getDate() + days);
+			return result;
+		},
+
+		getWeekInitData: function() {
+			for (var i = 0; i < 5; i ++) {
+				c.calendarRanges.push(addDays(c.selectedDate, i));
+			}
+		},
+
+		getDateInyyyymmdd: function (dateVal) {
+			var d = new Date(dateVal),
+					month = '' + (d.getMonth() + 1),
+					day = '' + d.getDate(),
+					year = d.getFullYear();
+
+			if (month.length < 2) month = '0' + month;
+			if (day.length < 2) day = '0' + day;
+
+			return [year, month, day].join('-');
+		},
+
+		getFirstAndLastDaysInTheWeek: function(date) {
+			var firstDay = new Date(date);
+			firstDay.setDate(firstDay.getDate() - firstDay.getDay());
+
+			var lastDay = new Date(date);
+			lastDay.setDate(lastDay.getDate() + 6 - lastDay.getDay());
+			lastDay.setHours(23,59,59,999);
+			return {start:firstDay, end:lastDay};
+		},
+
+		formatISODateString: function(d) {
+			if (d) {
+				var t = d.split("T");
+				d = t[0] + " " + t[1];
+				d = d.replace("Z","")
+			}
+			return d.substring(0, 19);
+		},
+
+		getAppointments: function(startDate, endDate, config, fetchNextAvailableSlot) {
+			var deferred = $q.defer();
+			var apiBaseUrl = '/api/sn_apptmnt_booking/v1/appointment';
+			var availabilityUrl = '/availability';
+
+			var payload = {
+				"start_date" 	: utils.formatISODateString(startDate),
+				"end_date" 		: utils.formatISODateString(endDate),
+				"location" 		: config.location,
+				"catalog_id" 	: config.catalogId,
+				"opened_for" 	: config.opened_for,
+				"full_day"  	: false,
+				"field_mapping" : config.service_config.field_mapping,
+				"task_table"	: config.task_table,
+				"view"			: config.view ? "platform" : "portal",
+				"otherInputs"    : config.otherInputs,
+				"taskId"        : config.taskId,
+				"get_next_available_slot": fetchNextAvailableSlot,
+				"get_next_available_day_data": fetchNextAvailableSlot,
+				"use_read_replica" : c.data.use_rr,
+				"service_config_rule": c.ruleId
+			}
+
+
+			$http.post(apiBaseUrl + availabilityUrl, payload).then(
+				function(response){
+					return deferred.resolve(response.data.result);
+				},
+				function(response){
+					return deferred.reject(response);
+				}
+			);
+			return deferred.promise;
+		},
+
+		stringToDate: function(dateString) {
+			var timeArray = dateString.toString().split(" ");
+			var dateArray = timeArray[0].split("-");
+			if (dateArray == undefined || dateArray.length < 1) { return "Invalid Date"; }
+			if (timeArray[1] == undefined || timeArray[1] == "") {
+				return new Date(dateArray[0],dateArray[1]-1,dateArray[2]);
+			}
+			var hourMinuteSecondArray = timeArray[1].split(":")
+			if (hourMinuteSecondArray == undefined || hourMinuteSecondArray.length < 1) {
+				return new Date(dateArray[0],dateArray[1]-1,dateArray[2]);
+			}
+			return new Date(dateArray[0],dateArray[1]-1,dateArray[2],hourMinuteSecondArray[0],hourMinuteSecondArray[1],hourMinuteSecondArray[2]);
+		},
+
+		isDateWithinRange: function(date) {
+			var d = new Date(date);
+			return (d.getTime() <= c.week.end.getTime() && d.getTime() >= c.week.start.getTime());
+		},
+
+		getTimeSlotFromDate: function(d) {
+			var curHr = new Date(d).getHours()
+			var timeSlot = '';
+			if (curHr >= c.data.morningStartHours && curHr < c.data.morningEndHours) {
+				timeSlot = c.morning;
+			} else if (curHr >= c.data.afternoonStartHours && curHr < c.data.afternoonEndHours) {
+				timeSlot = c.afternoon;
+			} else if (curHr >= c.data.eveningStartHours && curHr < c.data.eveningEndHours) {
+				timeSlot = c.evening;
+			}
+			return timeSlot;
+		},
+
+		reformatDate: function(dateString,localeLanguage,dateFormatOptions, isTimeFormat) {
+			var userTimeFormat = c.data.config.userTimeFormat || {};
+			var timeFormat = userTimeFormat.type == "12hr" ? "hh:mm A" : "HH:mm";
+			var dayTimeFormat = isTimeFormat ? timeFormat : "ddd, MMM Do YYYY";
+			return moment.tz(dateString, spUtil.getMomentTimeZone(c.data.uiRenderTz)).format(dayTimeFormat);
+		},
+
+		localizeSelectedWindow: function(selectedWindow, localeLanguage, dateFormatOptions, timeFormatOptions) {
+			var localizedSelectedWindow = {};
+			if (selectedWindow.actualStart) {
+				localizedSelectedWindow.actualStart = utils.reformatDate(selectedWindow.actualStart, localeLanguage, dateFormatOptions);
+				localizedSelectedWindow.actualStartTime = utils.reformatDate(selectedWindow.actualStart, localeLanguage, timeFormatOptions, true);
+			}
+
+			if (selectedWindow.actualEnd) {
+				localizedSelectedWindow.actualEnd = utils.reformatDate(selectedWindow.actualEnd, localeLanguage, dateFormatOptions);
+				localizedSelectedWindow.actualEndTime = utils.reformatDate(selectedWindow.actualEnd, localeLanguage, timeFormatOptions, true);
+			}
+
+			if (selectedWindow.actualStartUTC) {
+				localizedSelectedWindow.actualStartUTC = utils.reformatDate(selectedWindow.actualStartUTC, localeLanguage, dateFormatOptions);
+				localizedSelectedWindow.actualStartUTCTime = utils.reformatDate(selectedWindow.actualStartUTC, localeLanguage, timeFormatOptions);
+			}
+
+			if (selectedWindow.actualEndUTC) {
+				localizedSelectedWindow.actualEndUTC = utils.reformatDate(selectedWindow.actualEndUTC, localeLanguage, dateFormatOptions);
+				localizedSelectedWindow.actualEndUTCTime = utils.reformatDate(selectedWindow.actualEndUTC, localeLanguage, timeFormatOptions);
+			}
+
+			return localizedSelectedWindow;
+		},
+
+		dayNameTextForDayView: function(d) {
+			var dayOfWeekNum = new Date(d).getDay();
+			return c.config.translations.day_names[dayOfWeekNum];
+		},
+		
+		format: function(msg) {
+			if (!msg)
+				return "";
+
+			var str = msg;
+			for (var i = 1; i < arguments.length; i++) {
+				var paramIndex = i - 1;
+				var rx = new RegExp("\{[" + paramIndex + "]\}", "g");
+				str = str.replace(rx, arguments[i]);
+			}
+
+			return str;
+		}
+	}
+
+	initializeConfig();
+	
+	setTimeout(function() {
+		var pageRoot = jQuery('.sp-page-root');
+		if (pageRoot)
+			jQuery(pageRoot).attr("aria-hidden", true);
+
+		var modal = jQuery('div[modal-render="true"]');
+		if (modal) {
+			jQuery(modal).attr("aria-modal", true);
+			jQuery(modal).attr("aria-labelledby", "model_heading");
+		}
+	});
+	
+	if(!c.data.hide_modal_buttons){
+		setTimeout(function(){
+			document.querySelector('.modal-header button').focus();
+		});
+	}*/
+}
+]]></client_script>
+        <controller_as>c</controller_as>
+        <css>$picker-background-color-light: #EBF3F7;
+$picker-background-color-dark: $brand-primary;
+$picker-foreground-color-dark: darken($brand-primary, 12%);
+$picker-foreground-color-light: $text-color;
+$picker-foreground-color-neutral: $text-color;
+
+button, button.btn{
+  &amp;:focus, &amp;:active {
+    outline-offset: unset !important;
+  }
+}
+
+.appointmentBookingAvailabilityModalError .errorMessage {
+  height: 100px;
+  text: 13px;
+  padding: 10px;
+  border-radius:3px;
+  border:1px;
+  Background-color: $state-danger-bg;
+  color:$state-danger-text;
+  Border-color:$state-danger-border;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.disablePage {
+	pointer-events: none;
+}
+
+.appointmentBookingAvailabilityModal {
+  display: flex;
+  justify-content: space-between;
+  height: 500px;
+  flex-wrap: wrap;
+}
+
+.calendarContainer {
+  flex: 1;
+  border-right: 1px solid $modal-header-border-color;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .calHeader {
+    font-size: 20px;
+    font-weight: 600;
+    background-color: $picker-background-color-light;
+    color: $picker-foreground-color-dark;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+
+    button.btn {
+      font-size: 28px;
+      padding: 2px 12px;
+      background-color: inherit;
+		
+      &amp;:disabled {
+        border: unset;
+      }
+    }
+  }
+  
+  .timezoneContainer {
+  	display: flex;
+    flex-direction: column;
+    padding: 20px;
+    font-size: 18px;
+    line-height: 23px;
+    color: $text-color;
+
+  }
+
+  .timezone {
+    padding-botton: 5px;
+  }
+
+  table {
+    padding: 10px;
+    font-size: 14px;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 5px;
+    color: $picker-foreground-color-dark;
+
+    tr:first-child th{
+      border-bottom: 1px solid $modal-header-border-color;
+    }    
+
+    th, td {
+      text-align: center;
+      font-weight: 600;
+
+      button {
+        background-color: inherit;
+        font-size: inherit;
+        padding: 4px 12px;
+
+        &amp;:disabled {
+          color: $picker-foreground-color-light;
+          opacity: 0.5;
+          border: 0;
+        }
+      }
+    }
+
+    tr.selectedWeek {
+      td.dayExists {
+        color: $picker-foreground-color-dark;
+        background-color: $picker-background-color-light;
+
+        &amp;.selectedDate {
+          button {
+            font-size: inherit;
+            background-color: $picker-background-color-dark;
+            border-radius: 5px;
+            color: white;
+          }
+        }
+        &amp;:last-child, &amp;.RangeEnd {
+          border-top-right-radius: 5px;
+          border-bottom-right-radius: 5px;
+
+          &amp;.selectedDate {
+            background: linear-gradient(90deg, $picker-background-color-light 50%, white 50%);
+
+            &amp;:first-child {
+              background: unset;
+            }
+          }
+        }
+      }
+
+      td:first-child, td:not(.dayExists) + .dayExists {
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+
+        &amp;.dayExists.selectedDate {
+          background: linear-gradient(90deg, white 50%, $picker-background-color-light 50%);
+
+          &amp;:last-child {
+            background: unset;
+          }
+        }
+      }
+    }
+  }
+}
+
+.appointmentContentContainer {
+  display: flex;
+  flex-direction: column;
+  flex: 2;
+  height: 100%;
+
+  div.calendarHeaderContainer {
+    background: #FBFBFB;
+    display: flex;
+    padding: 10px 40px 20px 40px;
+    flex-wrap: wrap;
+
+    button {
+      background: white;
+      border-radius: 6px;
+      border: 0;
+      padding: 10px 15px;
+      margin-right: 10px;
+      margin-top: 10px;
+      color: $picker-foreground-color-neutral;
+      box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.17);
+
+      &amp;.headerSelected {
+        background: $picker-background-color-dark;
+        box-shadow: none;
+        color: white;
+      }
+
+      &amp;:disabled {
+        background-color: #EDEDED;
+        opacity: unset;
+        box-shadow: unset;
+      }
+    }
+  }
+
+  div.noSlotsFound {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    background-color: $picker-background-color-light;
+    padding: 20px 40px; 
+    overflow: auto;
+
+    .calendarIcon {
+      padding-bottom: 20px;
+      height: 40px;
+      width: 40px;
+      text-align: center;
+      font-size: 2.5em;
+    }
+  }
+  
+  .spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    background-color: $picker-background-color-light;
+    padding: 20px 40px; 
+    overflow: auto;
+
+    .spinnerLoading {	
+      font-size: 2.5em;
+    }
+}
+
+  div.appointmentSlotsContainer {
+    flex: 1;
+    background-color: $picker-background-color-light;
+    padding: 20px 40px; 
+    overflow: auto;
+
+    div.noOfSlots {
+      font-weight: 600;
+      font-size: 12px;
+      text-align: center;
+      color: $picker-foreground-color-dark;
+    }
+
+    button.appointmentSlot {
+      background: white;
+      border-radius: 6px;
+      display: flex;
+      margin: 5px 10px 5px 0;
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+      font-size: 16px;
+      text-align: center;
+      color: $picker-foreground-color-dark;
+      padding: 5px 15px;
+
+      &amp;.disabledSlot {
+        pointer-events: none;
+        //background-color: #EDEDED;
+        background-color: #E4E4E4;
+        color: $text-color;
+        //color: $picker-foreground-color-neutral;
+        box-shadow: unset;
+        opacity: unset;
+      }
+
+      &amp;.appointmentSlotSelected {
+        background: $picker-background-color-dark;
+        border: 1px solid $picker-background-color-dark;
+        box-shadow: none;
+        border-radius: 6px;
+      }
+    }
+
+    .noOfSlotsSelected {
+      color: #FFFFFF;
+    }
+
+    .slotText {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 20px;
+      text-align: center;
+      color: $picker-foreground-color-dark;
+      padding-right: 8px;
+      padding-left: 10px;
+    }
+
+    .noOfSlots {
+      font-style: normal;
+      font-weight: 600;
+      font-size: 16px;
+      color: $picker-foreground-color-dark;
+    }
+
+    .headingContainer {
+      display: flex;
+      align-items: center;
+      padding-bottom: 10px;
+    }
+
+    .timeSlotContainer .content {
+      display: flex;
+      flex-wrap: wrap;
+      padding-bottom: 30px;
+    }
+
+    .slotContentSelected {
+      color: #FFFFFF;
+    }
+
+    .scheduledSlot {
+      border: 1px solid $picker-foreground-color-dark;
+      opacity: 1;
+      color: #666666 !important;
+    }
+    
+    .scheduledSlotContainer {
+    	margin-bottom: 15px;
+      position: relative;
+    }
+    
+    .disabledOverlay {
+    	position: absolute;
+      opacity: 0;
+    }
+    
+    .scheduledSlotMsg {
+    	font-size: 12px;
+      color: $text-color;
+    }
+
+    .seeMoreOrLess {
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 20px;
+      color: $picker-foreground-color-dark;
+      background: none;
+      padding: 0;
+      border: 0;
+      height: 20px;
+	  	margin-top: 10px;
+    }
+
+    .seeMoreOrLess:focus {
+      box-shadow: none !important;
+    }
+  }
+}
+
+.ab-modal-footer button {
+  //border-radius: 50px;
+  padding: 5px 30px;
+}
+
+.ab-modal-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.selectedWindowText {
+	padding: 20px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 19px;
+  background: #F5FAF9;
+	border: 0.5px solid $modal-header-border-color;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 480px) {
+  
+  .appointmentBookingAvailabilityModal {
+  	min-height: 500px !important;
+    height: auto !important;
+  }
+  
+  .selectedWindowText {
+  	font-size: 16px !important;
+  }
+
+  .calendarContainer {
+    .timezoneContainer {
+      padding: 10px 20px;
+      font-size: 16px;
+      line-height: 20px;
+      color: $text-muted;
+    }
+
+    table {
+      padding: 0 !important;
+    }
+  }
+  .appointmentContentContainer {
+    div.calendarHeaderContainer {
+      padding: 10px 20px 20px 20px !important;
+      border-right: 0;
+
+      button {
+        padding: 8px 10px !important;
+        margin-right: 5px !important;
+      }
+    }
+
+    div.appointmentSlotsContainer {
+      padding: 20px !important; 
+      min-height: 150px !important; 
+    }
+
+    .spinner {
+      min-height: 150px !important;
+    }
+
+    div.noSlotsFound {
+      min-height: 150px !important;
+    }
+  }
+} 
+
+</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>true</has_preview>
+        <id>restaurant_booking</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>Restaurant Booking</name>
+        <option_schema>[{"hint":"Morning start time in 24hr to categorise a date time as morning, included.","name":"morning_start_hours","section":"other","default_value":"00","label":"Morning start hours","type":"string"},{"hint":"Morning end time in 24hr to categorise a date time as morning, excluded.","name":"morning_end_hours","section":"other","default_value":"12","label":"Morning end hours","type":"integer"},{"hint":"Afternoon start time in 24hr to categorise a date time as afternoon, included.","name":"afternoon_start_hours","section":"other","default_value":"12","label":"Afternoon start hours","type":"integer"},{"hint":"Afternoon end time in 24hr to categorise a date time as afternoon, excluded.","name":"afternoon_end_hours","section":"other","default_value":"17","label":"Afternoon end hours","type":"integer"},{"hint":"Evening start time in 24hr to categorise a date time as evening, included.","name":"evening_start_hours","section":"other","default_value":"17","label":"Evening start hours","type":"integer"},{"hint":"Evening end time in 24hr to categorise a date time as evening, excluded.","name":"evening_end_hours","section":"other","default_value":"24","label":"Evening end hours","type":"integer"},{"hint":"Hide the submit/cancel buttons on the UI (when the calender is in the page itself)","name":"hide_modal_buttons","section":"other","default_value":"","label":"Hide modal buttons","type":"boolean"},{"hint":"Widget level option for auto redirection to next available slot","name":"fetch_next_available_slot","section":"other","default_value":"","label":"Fetch next available appointment","type":"boolean"}]</option_schema>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+	/* populate the 'data' object */
+	/* e.g., data.table = $sp.getValue('table'); */
+
+	/*data.userTzName = gs.getSession().getTimeZoneName();	
+	data.apptBookingTranslations = sn_apptmnt_booking.AppointmentBookingConstants.TRANSLATIONS;
+
+	data.catalogItemId = $sp.getParameter("sys_id");
+	data.should_fetch_next_available_slot = (gs.getProperty("sn_apptmnt_booking.fetch_next_available_slot", false) == 'true');
+	data.use_rr = (gs.getProperty("sn_apptmnt_booking.use_read_replica_from_ui",false) == 'true');
+	// if option params passed as args from parent select appointment widget
+	if (options) {
+		var location_param = options.location || $sp.getParameter("location");
+		var user_param = options.opened_for || $sp.getParameter("opened_for");
+		var scheduled_appointment = options.scheduled_appointment ;
+	
+		// if config is passed from options or url params, set the config
+		if (options.config) {
+			data.config = options.config;
+			data.isConfigValid = true;
+			var util = new sn_apptmnt_booking.AppointmentBookingUtil();
+			data.uiRenderTz = util.getTimeZone(data.config.location, data.config.opened_for, data.config.service_config.default_timezone);
+		} else {
+			// if config is not pased, fetch the config on server and set it.
+			var catalogItemId = options.catalogItemId || data.catalogItemId;
+			if (catalogItemId) {
+				var impl = new AppointmentBooking_Factory().getWrapperType(AppointmentBookingConstants.CONFIGURATION);
+				var result = impl.getConfig(catalogItemId);
+				if (validateConfig(result.data)) {
+					data.isConfigValid = true;
+					data.config = result.data;
+					data.config.location = location_param;
+					data.config.opened_for = user_param;
+					data.config.scheduled_appointment = scheduled_appointment;
+					data.config.catalogId = catalogItemId;
+					var util = new sn_apptmnt_booking.AppointmentBookingUtil();
+					data.uiRenderTz = util.getTimeZone(data.config.location, data.config.opened_for, data.config.service_config.default_timezone);
+				} else {
+					data.isConfigValid = false;
+				}
+			}
+		}
+		
+		if (options.catalogItemId)
+			data.catalogItemId = options.catalogItemId;
+
+		if(checkIfTrue(options.hide_modal_buttons))
+			data.hide_modal_buttons = checkIfTrue(options.hide_modal_buttons);
+		
+		if('fetch_next_available_slot' in options)
+			data.should_fetch_next_available_slot = checkIfTrue(options.fetch_next_available_slot);
+			
+		data.morningStartHours = options.morning_start_hours;
+		data.morningEndHours = options.morning_end_hours;
+		data.afternoonStartHours = options.afternoon_start_hours;
+		data.afternoonEndHours = options.afternoon_end_hours;
+		data.eveningStartHours = options.evening_start_hours;
+		data.eveningEndHours = options.evening_end_hours;
+	}
+
+	data.language = gs.getSession().getLanguage();
+	data.showAll = gs.getMessage("Show All");
+	data.showLess = gs.getMessage("Show Less");
+	
+	data.showAllMorning = gs.getMessage("Show all morning appointments");
+	data.showLessMorning = gs.getMessage("Show less morning appointments");
+	data.showAllAfternoon = gs.getMessage("Show all afternoon appointments");
+	data.showLessAfternoon = gs.getMessage("Show less afternoon appointments");
+	data.showAllEvening = gs.getMessage("Show all evening appointments");
+	data.showLessEvening = gs.getMessage("Show less evening appointments");
+		
+	data.morning = gs.getMessage("Morning");
+	data.afternoon = gs.getMessage("Afternoon");
+	data.evening = gs.getMessage("Evening");
+	data.scheduledSlotMsg = gs.getMessage("This is your already scheduled slot");
+	data.slotsText = gs.getMessage("{0} Slots");
+	data.slotText = gs.getMessage("{0} Slot");
+	data.confirmationMessage = options.confirmation_message_key;
+	data.errorMessage = gs.getMessage("Reason code: {0}");
+	data.hours = gs.getMessage("Hours");
+	data.hour = gs.getMessage("Hour");
+	data.minutes = gs.getMessage("Minutes");
+	data.minute = gs.getMessage("Minute");
+	data.currentInterval = gs.getMessage("The Slot interval is {0}");
+	
+	function checkIfTrue(value){
+		if(value == 'true')
+			return true;
+		if(value == true)
+			return true;
+		return false;
+	}
+	
+	
+	function validateConfig(config) {
+			if (config && config.activeString == "true") {
+				// checking parent config is active
+				var serviceConfig = config.service_config;
+				if (serviceConfig && serviceConfig.activeString == "true")
+					return true;
+			}
+		return false;
+	}*/
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-06-08 11:38:00</sys_created_on>
+        <sys_id>34fe84d841889910f877fdd676e40462</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>Restaurant Booking</sys_name>
+        <sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</sys_scope>
+        <sys_update_name>sp_widget_34fe84d841889910f877fdd676e40462</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <template><![CDATA[<div id="appointmentBookingAvailabilityModal" class="appointmentBookingAvailabilityModal" ng-class="{'disablePage': c.fetchingAppointments}" ng-if="c.isConfigValid" ng-show="!c.showErrorMessage">
+  <div ng-if="!c.data.hide_modal_buttons" ng-focus="c.handleFistFocussableElement()" id='appBookingContainer_first_tabable' tabindex="0"></div>
+  <div class="calendarContainer" ng-if="c.selectedDate">
+    <div>
+      <div class="calHeader">
+        <button id="goPrevious" aria-label="${View previous month}" class="btn" ng-click="c.updateMonth(-1)" ng-disabled="c.minDate.year == c.selectedDate.getFullYear() && c.minDate.month == c.selectedDate.getMonth()">
+          <i class="fa fa-caret-left"/>
+        </button>
+        <span aria-live="polite">{{c.config.translations.months[c.selectedDate.getMonth()]}} {{c.selectedDate.getFullYear()}}</span>
+        <button id="goNext" aria-label="${View next month}" class="btn" ng-click="c.updateMonth(1)" ng-disabled="c.isNextMonthDisabled()">
+          <i class="fa fa-caret-right"/>
+        </button>
+      </div>
+      <table role="grid" summary="{{c.select_appointment_calendar_text}}">
+        <thead>
+          <tr ng-if="c.data.language == 'en'">
+            <th ng-repeat="dayObj in c.weekDaysObjEng">
+              <span aria-hidden="true">{{dayObj.day}}</span>
+              <span class="sr-only">{{dayObj.label}}</span>
+            </th>
+          </tr>
+          <tr ng-if="c.data.language != 'en'">
+            <th scope="col" ng-repeat="dayObj in c.weekDaysObjOtherLan">
+              <span aria-hidden="true">{{dayObj.day}}</span>
+              <span class="sr-only">{{dayObj.label}}</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="week in c.calenderDays" ng-class="{selectedWeek: week.selected}">
+            <td ng-repeat="day in week.days track by $index" ng-attr-aria-selected="{{day==c.selectedDay?true:undefined}}" ng-class="{dayExists: day && !c.isDayDisabled(day), selectedDate: day == c.selectedDay, RangeEnd: c.isDayDisabled(day + 1)}">
+              <button id="day_{{day}}" ng-if="day" class="btn" ng-click="c.changeDate(day,week)" ng-keydown="c.updateDate($event)" ng-disabled="c.isDayDisabled(day)" tabindex="{{(day == (c.focusedDate || c.selectedDay))? 0: -1}}" data-date="{{day}}" aria-label="{{c.getCalenderDateLabel(day)}}" aria-pressed="{{day == c.selectedDay}}">
+                {{day}}
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="timezoneContainer">
+      <span class="timezone" ng-show="c.time_zone_display_value">{{c.timezoneGroupTitle}}{{c.time_zone_display_value}}</span>
+	    <span class="duration" ng-show="c.slotDuration">{{c.slotInterval}}</span>
+    </div>  
+  </div>
+  
+  <div class="appointmentContentContainer">
+    <div class="calendarHeaderContainer" ng-if="c.selectedDate">
+      <button ng-attr-aria-controls="{{!c.fetchingAppointments && c.slotsByDays[c.activeDate] && c.slotsByDays[c.activeDate].actual && c.slotsByDays[c.activeDate].actual.length > 0 ? apppointmentInfo: apppointmentInfoEmpty}}" role="button" aria-label={{date.reformatedSelectedDate}} ng-repeat="date in c.calendarRanges" ng-click="c.setActiveDateAndFetchAppointments(date.value)" ng-disabled="c.isDayDisabled(date.value.getDate())" ng-class="{headerSelected: date.date == c.activeDate}" ng-if="c.calendarRanges && c.calendarRanges.length > 0" class="btn">
+        {{date.displayValue}}
+      </button>
+    </div>
+    <div role="region" id="apppointmentInfo" aria-live="polite" ng-if="!c.fetchingAppointments && c.slotsByDays[c.activeDate] && c.slotsByDays[c.activeDate].actual && c.slotsByDays[c.activeDate].actual.length > 0" class="appointmentSlotsContainer">
+      <div ng-show="!c.fetchingAppointments && c.slotsByDays[c.activeDate] && c.slotsByDays[c.activeDate].actual && c.slotsByDays[c.activeDate].actual.length > 0">
+        <div class="timeSlotContainer" ng-repeat="(key,time) in c.timeDayMap" ng-if="c.slotsByDays[c.activeDate].actualCountAvailable && c.slotsByDays[c.activeDate].actualCountAvailable[key]" ng-show="c.slotsByDays[c.activeDate].actualCountAvailable && c.slotsByDays[c.activeDate].actualCountAvailable[key] > 0">
+          <div class="headingContainer">
+            <span ng-show="false" id="{{key}}">{{c.morning}}</span>
+            <svg ng-show="key == c.data.morning" role="img" aria-labelledby="{{key}}" focusable="false" width="18" height="18" aria-hidden="true" viewBox="0 -4 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <title>{{key}}</title>
+              <path d="M7.98008 3.3916C10.414 3.3916 12.409 5.22701 12.6085 7.58113H15.601C16.1197 7.58113 16.1197 8.37913 15.601 8.37913C10.5337 8.37913 5.46637 8.37913 0.399037 8.37913C-0.119666 8.37913 -0.119666 7.58113 0.399037 7.58113H3.39156C3.59106 5.22701 5.58607 3.3916 7.98008 3.3916ZM7.98008 4.18961C6.02497 4.18961 4.38906 5.66592 4.18956 7.58113H11.8105C11.611 5.66592 9.9352 4.18961 7.98008 4.18961Z" fill="black"/>
+              <path d="M7.58105 0.399037C7.58105 -0.119666 8.37906 -0.119666 8.37906 0.399037V2.07485C8.37906 2.59355 7.58105 2.59355 7.58105 2.07485V0.399037Z" fill="black"/>
+              <path d="M13.0874 2.35406C13.4465 1.95506 14.0051 2.51367 13.646 2.91267L12.449 4.10968C12.0899 4.46878 11.5313 3.91018 11.8904 3.55107L13.0874 2.35406Z" fill="black"/>
+              <path d="M2.35406 2.91267C1.95506 2.51367 2.51366 1.95506 2.91266 2.35406L4.10967 3.55107C4.46877 3.91018 3.91017 4.46878 3.55107 4.10968L2.35406 2.91267Z" fill="black"/>
+            </svg>
+            <i ng-show="key != c.data.morning" aria-hidden="true" class="fa {{time.icon}}"></i>
+            <div class="slotText">{{key}}</div>
+          </div>
+          <div class="content">
+            <div ng-class="{'scheduledSlotContainer': c.checkIfMobileDevice() &&appointmentWindow.scheduled == true}" ng-if="c.slotsByDays[c.activeDate][key]" ng-repeat="appointmentWindow in c.getSlicedSlots(key)">
+              <button ng-class="{'appointmentSlot': appointmentWindow.actualStart != c.selectedWindow.actualStart, 'scheduledSlot': appointmentWindow.scheduled == true }" class="disabledOverlay" ng-attr-uib-tooltip="{{appointmentWindow.scheduled == true && !c.checkIfMobileDevice() ? c.scheduledSlotTextMessage : null}}" ng-show="appointmentWindow.scheduled == true">
+              	<span ng-class="{'slotContent': appointmentWindow.actualStart != c.selectedWindow.actualStart }">{{appointmentWindow.start}}</span>
+              </button>                
+            	<button aria-label="{{c.appointmentWIndowAriaLabelStartText}}: {{appointmentWindow.reformatedSelectedDate}} - {{c.appWindowBtnTextStartTime}}:{{appointmentWindow.start}} - {{c.appWindowBtnTextEndTime}}:{{appointmentWindow.end}}" class="btn appointmentSlot"
+                    ng-disabled="!appointmentWindow.available || appointmentWindow.scheduled == true" ng-class="{'appointmentSlot appointmentSlotSelected': appointmentWindow.actualStart === c.selectedWindow.actualStart, 'appointmentSlot': appointmentWindow.actualStart != c.selectedWindow.actualStart, 'disabledSlot': !appointmentWindow.available && appointmentWindow.scheduled != true, 'scheduledSlot': appointmentWindow.scheduled == true }" ng-click = "c.selectActiveSlot(appointmentWindow, $index)" aria-pressed="{{appointmentWindow.actualStart === c.selectedWindow.actualStart? true:false }}">
+              <span ng-class="{'slotContent slotContentSelected': appointmentWindow.actualStart === c.selectedWindow.actualStart, 'slotContent': appointmentWindow.actualStart != c.selectedWindow.actualStart }">{{appointmentWindow.start}}</span>
+            </button>
+              <span ng-show="c.checkIfMobileDevice() && appointmentWindow.scheduled == true" class="scheduledSlotMsg">{{c.scheduleSlotMsg}}</span>
+            </div>
+            <button ng-disabled="!c.shouldShowSeeMoreLess(key)" aria-label="{{c.getSeeOrMoreAriaLabelText(key)}}" class="btn btn-link seeMoreOrLess" ng-show="c.shouldShowSeeMoreLess(key)" ng-click="c.toggleShowMoreLess(key)">{{c.getSeeOrMoreText(key)}}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div role="region" id="apppointmentInfoEmpty" aria-live="polite" class="noSlotsFound" ng-show="!c.fetchingAppointments && (!c.slotsByDays[c.activeDate] || (c.slotsByDays[c.activeDate] && !c.slotsByDays[c.activeDate].actual && c.slotsByDays[c.activeDate].actual.length == 0))">
+      <i class="fa fa-calendar calendarIcon" aria-hidden="true"></i>
+      <div>{{c.noAppointmentTextInDayColumn}}</div>
+    </div>
+    <div id="spinner" ng-show="c.fetchingAppointments" class="spinner" aria-hidden="true" name="spinner">
+      <i class="fa fa-spinner fa-spin spinnerLoading"></i>
+    </div>
+  </div>
+</div>
+
+<div id="errorMsg" class="appointmentBookingAvailabilityModalError" ng-if="c.showErrorMessage">
+  <div ng-show="c.showErrorMessage" class="errorMessage notification-error ">
+    {{c.errorMsg}} <br/>
+  </div>
+</div>
+<div class="selectedWindowText" ng-show="c.selectedWindow && c.selectedWindow.actualStart">
+  {{c.confirmationMsgString}}
+</div>
+
+<!-- Action Buttons -->
+<div class="modal-footer ab-modal-footer" ng-if="!c.data.hide_modal_buttons" ng-show="!c.showErrorMessage">
+  <button aria-label="{{cancelBtnText}}"  class="btn btn-default cancel-btn action-btn" ng-click="c.cancelBtnClick()">{{c.cancelBtnText}}</button>
+  <button id="submitBtn" tabindex="!c.selectedWindow || !c.selectedWindow.start ? -1 : 0" id="submitBtn" aria-label="{{submitBtnText}}" class="btn btn-primary action-btn" ng-click="c.submitBtnClick()" ng-disabled="!c.selectedWindow || !c.selectedWindow.start">{{c.submitBtnText}}</button>
+</div>
+<div ng-if="!c.data.hide_modal_buttons" ng-focus="c.handleLastFocussableElement()" id='appBookingContainer_last_tabable' tabindex="0"></div>
+]]></template>
+    </sp_widget>
+</record_update>

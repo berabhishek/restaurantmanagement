@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl_role">
+    <sys_security_acl_role action="DELETE">
+        <sys_class_name>sys_security_acl_role</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-06-06 10:30:30</sys_created_on>
+        <sys_id>505ca12b41730910f877fdd676e40472</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_snc_restaurant_m_order_item.x_snc_restaurant_m.order_item_user</sys_name>
+        <sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</sys_scope>
+        <sys_security_acl display_value="x_snc_restaurant_m_order_item">505ca12b41730910f877fdd676e40463</sys_security_acl>
+        <sys_update_name>sys_security_acl_role_505ca12b41730910f877fdd676e40472</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-06-06 10:30:30</sys_updated_on>
+        <sys_user_role display_value="x_snc_restaurant_m.order_item_user" name="x_snc_restaurant_m.order_item_user">c85ca9e741730910f877fdd676e4044b</sys_user_role>
+        <transaction_id/>
+    </sys_security_acl_role>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</application>
+        <file_path/>
+        <instance_id>c0b26ae9f0330110f87765368869fbdd</instance_id>
+        <instance_name>instance</instance_name>
+        <name>sys_security_acl_role_505ca12b41730910f877fdd676e40472</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl_role"><sys_security_acl_role action="INSERT_OR_UPDATE"><sys_class_name>sys_security_acl_role</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2022-06-06 10:30:30</sys_created_on><sys_id>505ca12b41730910f877fdd676e40472</sys_id><sys_mod_count>0</sys_mod_count><sys_name>x_snc_restaurant_m_order_item.x_snc_restaurant_m.order_item_user</sys_name><sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package><sys_policy/><sys_scope display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</sys_scope><sys_security_acl display_value="x_snc_restaurant_m_order_item">505ca12b41730910f877fdd676e40463</sys_security_acl><sys_update_name>sys_security_acl_role_505ca12b41730910f877fdd676e40472</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2022-06-06 10:30:30</sys_updated_on><sys_user_role display_value="x_snc_restaurant_m.order_item_user" name="x_snc_restaurant_m.order_item_user">c85ca9e741730910f877fdd676e4044b</sys_user_role><transaction_id/></sys_security_acl_role></record_update>]]></payload>
+        <payload_hash>194693864</payload_hash>
+        <record_name>x_snc_restaurant_m_order_item.x_snc_restaurant_m.order_item_user</record_name>
+        <reverted_from/>
+        <source>bdaae16741730910f877fdd676e404d1</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-06-06 10:30:30</sys_created_on>
+        <sys_id>145ca12b41730910f877fdd676e40474</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1813890ea940000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-06-06 10:30:30</sys_updated_on>
+        <type>Access Roles</type>
+        <update_guid>5c5ca12b62730910bf777d1afe410373</update_guid>
+        <update_guid_history>5c5ca12b62730910bf777d1afe410373:194693864</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="x_snc_restaurant_m_order_item.x_snc_restaurant_m.order_item_user">009c458a41c85150f877fdd676e404e7</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-06-14 02:36:35</sys_created_on>
+        <sys_db_object display_value="" name="sys_security_acl_role">sys_security_acl_role</sys_db_object>
+        <sys_id>ace2cc66026e426a8de504fa324d8db1</sys_id>
+        <sys_metadata>505ca12b41730910f877fdd676e40472</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_snc_restaurant_m_order_item.x_snc_restaurant_m.order_item_user</sys_name>
+        <sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package>
+        <sys_parent display_value="">505ca12b41730910f877fdd676e40463</sys_parent>
+        <sys_policy/>
+        <sys_scope display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</sys_scope>
+        <sys_scope_delete display_value="">2fc304b5326340dba29f505a63b222c1</sys_scope_delete>
+        <sys_update_name>sys_security_acl_role_505ca12b41730910f877fdd676e40472</sys_update_name>
+        <sys_update_version display_value="sys_security_acl_role_505ca12b41730910f877fdd676e40472">145ca12b41730910f877fdd676e40474</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+    </sys_metadata_delete>
+</record_update>
