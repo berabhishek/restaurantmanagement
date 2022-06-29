@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_row">
+    <sp_row action="INSERT_OR_UPDATE">
+        <class_name/>
+        <order>1</order>
+        <sp_column/>
+        <sp_container display_value="Restaurant Home - Container 1">a1d495e810d45510f877e0283ffbcd0c</sp_container>
+        <sys_class_name>sp_row</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-06-21 21:37:32</sys_created_on>
+        <sys_id>25d41de810d45510f877e0283ffbcd64</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>1</sys_name>
+        <sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</sys_scope>
+        <sys_update_name>sp_row_25d41de810d45510f877e0283ffbcd64</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+    </sp_row>
+</record_update>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl">
+    <sys_security_acl action="DELETE">
+        <active>true</active>
+        <admin_overrides>true</admin_overrides>
+        <advanced>false</advanced>
+        <condition/>
+        <description>Allow write for records in x_snc_restaurant_m_order_item_task, for users with role x_snc_restaurant_m.chef.</description>
+        <name>x_snc_restaurant_m_order_item_task</name>
+        <operation display_value="write">write</operation>
+        <script/>
+        <sys_class_name>sys_security_acl</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-06-13 23:42:05</sys_created_on>
+        <sys_id>98742cca41085150f877fdd676e404ad</sys_id>
+        <sys_mod_count>25</sys_mod_count>
+        <sys_name>x_snc_restaurant_m_order_item_task</sys_name>
+        <sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</sys_scope>
+        <sys_update_name>sys_security_acl_98742cca41085150f877fdd676e404ad</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-06-14 02:26:48</sys_updated_on>
+        <type display_value="record">record</type>
+    </sys_security_acl>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</application>
+        <file_path/>
+        <instance_id>c0b26ae9f0330110f87765368869fbdd</instance_id>
+        <instance_name>instance</instance_name>
+        <name>sys_security_acl_98742cca41085150f877fdd676e404ad</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl"><sys_security_acl action="INSERT_OR_UPDATE"><active>true</active><admin_overrides>true</admin_overrides><advanced>false</advanced><condition/><description>Allow write for records in x_snc_restaurant_m_order_item_task, for users with role x_snc_restaurant_m.chef.</description><name>x_snc_restaurant_m_order_item_task</name><operation display_value="write">write</operation><script/><sys_class_name>sys_security_acl</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2022-06-13 23:42:05</sys_created_on><sys_id>98742cca41085150f877fdd676e404ad</sys_id><sys_mod_count>25</sys_mod_count><sys_name>x_snc_restaurant_m_order_item_task</sys_name><sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package><sys_policy/><sys_scope display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</sys_scope><sys_update_name>sys_security_acl_98742cca41085150f877fdd676e404ad</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2022-06-14 02:26:48</sys_updated_on><type display_value="record">record</type></sys_security_acl></record_update>]]></payload>
+        <payload_hash>1212955357</payload_hash>
+        <record_name>x_snc_restaurant_m_order_item_task</record_name>
+        <reverted_from/>
+        <source>bdaae16741730910f877fdd676e404d1</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-06-14 02:26:48</sys_created_on>
+        <sys_id>c55a49c641c85150f877fdd676e404c0</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1816008f5400000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-06-14 02:26:48</sys_updated_on>
+        <type>Access Control</type>
+        <update_guid>c95a898602c8515088170889f937c90e</update_guid>
+        <update_guid_history>c95a898602c8515088170889f937c90e:1212955357,acb3700295885150f93be5612b2c84fa:599476765,198230ce3a4851501898cbd23474fe2f:740023422,fd7f60ca69485150cec927d2264f7f7c:1212955357,f9ee288a1a4851505809a99e754335ff:-1867283418,237ea84acc485150c96fd6d05f96e89c:28195662,ee6ee84ae1485150066eb1ceb6c2cd2b:-736390354,b14ee84a314851503fc59b4e78bd8956:176309542,36fd2c0a6448515018e9259f5d7b1e6b:599476765,966da80af14851505446238df45a8dfc:-736390354,51fc28c63248515093bcf95683e36656:-1038435812,d67b60864e48515066a2fffdb4eb8549:-736390354,f2ba28464b48515054727d74356ebcb1:28195662,7f6aac0601485150fe0596f24068c6d1:581154507,7b1ae406aa485150f5fd384687bf1be5:28195662,2c0aa806b4485150fc8ade70e97b9e20:-736390354,50b92406364851508cf7f9780e4d8088:1610601390,e029a8c2bc4851507534bc964f981fb9:28195662,45e864c2144851507fb10d67617c8bc3:2143071545,c4b860c243485150ca8d8f6c23ff0d88:1212955357,d0886c8285485150ff4fb66d6b0823f3:1121746616,66682c825c485150b2ef1a077258e53f:221228732,659520ce650851500699016038e8f351:977795818,1d45e0ceab0851501d5c42152681422d:599476765,2ed42c8e1a0851502c1f03488ed62b33:1879089455,48a4e84e000851501e7f99ee3684704a:-1911835481</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-06-14 02:33:11</sys_created_on>
+        <sys_db_object display_value="" name="sys_security_acl">sys_security_acl</sys_db_object>
+        <sys_id>93a0c8be8e85404dace0a76f8d41da29</sys_id>
+        <sys_metadata>98742cca41085150f877fdd676e404ad</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_snc_restaurant_m_order_item_task</sys_name>
+        <sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package>
+        <sys_parent display_value="">5780396f41730910f877fdd676e404ee</sys_parent>
+        <sys_policy/>
+        <sys_scope display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</sys_scope>
+        <sys_scope_delete display_value="">2fc304b5326340dba29f505a63b222c1</sys_scope_delete>
+        <sys_update_name>sys_security_acl_98742cca41085150f877fdd676e404ad</sys_update_name>
+        <sys_update_version display_value="sys_security_acl_98742cca41085150f877fdd676e404ad">c55a49c641c85150f877fdd676e404c0</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+    </sys_metadata_delete>
+</record_update>

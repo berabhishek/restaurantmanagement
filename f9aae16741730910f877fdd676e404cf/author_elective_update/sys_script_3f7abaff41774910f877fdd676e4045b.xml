@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script">
+    <sys_script action="DELETE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>false</action_insert>
+        <action_query>false</action_query>
+        <action_update>true</action_update>
+        <active>false</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>x_snc_restaurant_m_order</collection>
+        <condition/>
+        <description/>
+        <execute_function>false</execute_function>
+        <filter_condition table="x_snc_restaurant_m_order">statusCHANGESTOplaced^EQ<item display_value="Placed" endquery="false" field="status" goto="false" newquery="false" operator="CHANGESTO" or="false" value="placed"/>
+            <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
+        </filter_condition>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>Create Order Item Tasks</name>
+        <order>100</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
+	var orderitems = new GlideRecord("x_snc_restaurant_m_order_item");
+	orderitems.addQuery("order.number", current.number.toString());
+	orderitems.query();
+	while(orderitems.next()) {
+		var ordertask = new GlideRecord("x_snc_restaurant_m_order_item_task");
+		ordertask.initialize();
+		ordertask.order_item = orderitems.sys_id;
+		ordertask.insert();
+	}
+
+})(current, previous);]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-06-07 10:57:20</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>3f7abaff41774910f877fdd676e4045b</sys_id>
+        <sys_mod_count>48</sys_mod_count>
+        <sys_name>Create Order Item Tasks</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</sys_scope>
+        <sys_update_name>sys_script_3f7abaff41774910f877fdd676e4045b</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-06-14 02:40:28</sys_updated_on>
+        <template/>
+        <when>after</when>
+    </sys_script>
+    <sys_translated_text action="DELETE" query="documentkey=3f7abaff41774910f877fdd676e4045b"/>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</application>
+        <file_path/>
+        <instance_id>c0b26ae9f0330110f87765368869fbdd</instance_id>
+        <instance_name>instance</instance_name>
+        <name>sys_script_3f7abaff41774910f877fdd676e4045b</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update sys_domain="global" table="sys_script"&gt;&lt;sys_script action="INSERT_OR_UPDATE"&gt;&lt;abort_action&gt;false&lt;/abort_action&gt;&lt;access&gt;package_private&lt;/access&gt;&lt;action_delete&gt;false&lt;/action_delete&gt;&lt;action_insert&gt;false&lt;/action_insert&gt;&lt;action_query&gt;false&lt;/action_query&gt;&lt;action_update&gt;true&lt;/action_update&gt;&lt;active&gt;false&lt;/active&gt;&lt;add_message&gt;false&lt;/add_message&gt;&lt;advanced&gt;true&lt;/advanced&gt;&lt;change_fields&gt;false&lt;/change_fields&gt;&lt;client_callable&gt;false&lt;/client_callable&gt;&lt;collection&gt;x_snc_restaurant_m_order&lt;/collection&gt;&lt;condition/&gt;&lt;description/&gt;&lt;execute_function&gt;false&lt;/execute_function&gt;&lt;filter_condition table="x_snc_restaurant_m_order"&gt;statusCHANGESTOplaced^EQ&lt;item display_value="Placed" endquery="false" field="status" goto="false" newquery="false" operator="CHANGESTO" or="false" value="placed"/&gt;&lt;item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/&gt;&lt;/filter_condition&gt;&lt;is_rest&gt;false&lt;/is_rest&gt;&lt;message/&gt;&lt;name&gt;Create Order Item Tasks&lt;/name&gt;&lt;order&gt;100&lt;/order&gt;&lt;priority&gt;100&lt;/priority&gt;&lt;rest_method/&gt;&lt;rest_method_text/&gt;&lt;rest_service/&gt;&lt;rest_service_text/&gt;&lt;rest_variables/&gt;&lt;role_conditions/&gt;&lt;script&gt;&lt;![CDATA[(function executeRule(current, previous /*null when async*/) {
+	var orderitems = new GlideRecord("x_snc_restaurant_m_order_item");
+	orderitems.addQuery("order.number", current.number.toString());
+	orderitems.query();
+	while(orderitems.next()) {
+		var ordertask = new GlideRecord("x_snc_restaurant_m_order_item_task");
+		ordertask.initialize();
+		ordertask.order_item = orderitems.sys_id;
+		ordertask.insert();
+	}
+
+})(current, previous);]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;sys_script&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2022-06-07 10:57:20&lt;/sys_created_on&gt;&lt;sys_domain&gt;global&lt;/sys_domain&gt;&lt;sys_domain_path&gt;/&lt;/sys_domain_path&gt;&lt;sys_id&gt;3f7abaff41774910f877fdd676e4045b&lt;/sys_id&gt;&lt;sys_mod_count&gt;48&lt;/sys_mod_count&gt;&lt;sys_name&gt;Create Order Item Tasks&lt;/sys_name&gt;&lt;sys_overrides/&gt;&lt;sys_package display_value="Restaurant Management" source="x_snc_restaurant_m"&gt;f9aae16741730910f877fdd676e404cf&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Restaurant Management"&gt;f9aae16741730910f877fdd676e404cf&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_script_3f7abaff41774910f877fdd676e4045b&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2022-06-14 02:40:28&lt;/sys_updated_on&gt;&lt;template/&gt;&lt;when&gt;after&lt;/when&gt;&lt;/sys_script&gt;&lt;sys_translated_text action="delete_multiple" query="documentkey=3f7abaff41774910f877fdd676e4045b"/&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>380420667</payload_hash>
+        <record_name>Create Order Item Tasks</record_name>
+        <reverted_from/>
+        <source>bdaae16741730910f877fdd676e404d1</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-06-14 02:40:29</sys_created_on>
+        <sys_id>117d85ca41c85150f877fdd676e4046b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>181601579780000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-06-14 02:40:29</sys_updated_on>
+        <type>Business Rule</type>
+        <update_guid>197d85ca3cc85150bf5bdb415558696a</update_guid>
+        <update_guid_history>197d85ca3cc85150bf5bdb415558696a:380420667,5f68d591304c9d1067cc4d2e12d9efe5:693826498,b7b4d111624c9d10fda07bcacd41f1ae:-693952858,c9e1d1c0e1cc5910de5d4ba1eef2fc09:209081522,edf01d8087cc5910d90a1a871ec259a9:1702887265,82109d40a4cc5910a78765c246ef7208:-1142570693,60ae49cc128c59107d190a09098274fa:-223178292,e57e41002ccc5910d2afc8851569dd25:87392652,7a2e45ccdd8c59104f91376dcd5aa10e:1745979161,48ed41ccdc8c59108dfaf553b936e7a9:-777302166,65adc1cc958c5910f27a8111db83c10a:-710074893,26dbc10c5b8c59100f67f484bdbf582c:-277201907,dbbb814ce68c5910e91f06b326c57f54:-1992890767,5cab814c198c5910d351370d6df8234b:-2012526704,c5bac10c008c59107869adaa1f11b7a9:-1114056007,bf876088060c59107f4286185046fd4d:-825150867,6ea32484b80c591044ce2a6b548e24b3:601366268,c3736084a40c59109bd220091542e912:511329884,a3726044e70c59108dabd58fb015a79d:118234050,fb526804820c59108c4a9bd95b731aea:142469857,6f326c04d20c591040bad9cc7ffc0c3f:118234050,1ff1a4041c0c591018d56bf76322a016:-186379376,05d164041f0c59104accf8bdc85b18ff:141471965,8c902880d60c59109bd9959eab81ecfa:-92955586,485068803b0c59104c01c3d743d24098:943032253,f000ac400a0c5910089c1209faef66af:168381291,e4ef1480340c5910bf36c917bee1c1fb:-747748498,247f9c40530c591010f37980fb152d8e:-1902009962,945f1c40ef0c5910232b7dbec03c4d46:-179434936,873f9840780c59108d8659a775b29daa:-1581181188,eaae5400670c5910ceea1c4ecdebfbf3:1381589419,a99edc003d0c591085403cb4219ae5f9:-224237319,b56e9800680c5910325b51aa83027b8c:-866551494,713e5800650c591042658704668a9007:-1033635367,ee1ed0006d0c5910ad3c9f8967d1306a:2081025114,490e14009a0c5910c9c6d38982e83c63:-1571628007,daed18cc5cc8591092c744615c4f24fc:1951558731,85cd94cc39c85910a95683751f84e229:-1084064144,ec4d54ccebc85910a9782f4f8f1f92ed:1044062294,0f1d14cc36c85910883d9b159bec45fb:-388474049,100d50cc7ac859109dfd08bdc255b2de:-1571865376,76dc148cc8c8591028adee50cc7a612f:-1948792063,31b2c7f76ab749104da7912e5685fbca:146195981,9972c3f71bb74910e8c618866e9b6b86:-1352046391,3c52c3f798b749106c3685262b191524:547691936,0a1283f76eb74910633d0a4364cb50f6:273280440,f9dc7a7389b749100135d980bb5f3c4b:1088430538,953cf67372b74910dcd87d2bb531654c:-1447020170,030cba3394b74910c59fc265efb71a21:97861579</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-06-22 15:06:23</sys_created_on>
+        <sys_db_object display_value="" name="sys_script">sys_script</sys_db_object>
+        <sys_id>677a7852f0f74918b0177448c1c11761</sys_id>
+        <sys_metadata>3f7abaff41774910f877fdd676e4045b</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Create Order Item Tasks</sys_name>
+        <sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package>
+        <sys_parent display_value="">f49be1e741730910f877fdd676e404bf</sys_parent>
+        <sys_policy/>
+        <sys_scope display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</sys_scope>
+        <sys_scope_delete display_value="">2fc304b5326340dba29f505a63b222c1</sys_scope_delete>
+        <sys_update_name>sys_script_3f7abaff41774910f877fdd676e4045b</sys_update_name>
+        <sys_update_version display_value="sys_script_3f7abaff41774910f877fdd676e4045b">117d85ca41c85150f877fdd676e4046b</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+    </sys_metadata_delete>
+</record_update>

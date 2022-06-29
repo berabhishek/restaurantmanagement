@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_instance_vlist">
+    <sp_instance_vlist action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <class_name/>
+        <color>default</color>
+        <css/>
+        <display_field>cat_item</display_field>
+        <field_list/>
+        <filter/>
+        <glyph/>
+        <id/>
+        <maximum_entries>10</maximum_entries>
+        <order>1</order>
+        <order_by/>
+        <order_direction>asc</order_direction>
+        <roles/>
+        <short_description/>
+        <size>md</size>
+        <sp_column display_value="1">b1d41de810d45510f877e0283ffbcda0</sp_column>
+        <sp_page display_value="sc_request">a44fd933d7230200a9addd173e24d4b3</sp_page>
+        <sp_widget display_value="Requested Items">624afdb3d7230200a9addd173e24d4f4</sp_widget>
+        <sys_class_name>sp_instance_vlist</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-06-22 20:16:46</sys_created_on>
+        <sys_id>18fb02f410d89510f877e0283ffbcdee</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>Title</sys_name>
+        <sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</sys_scope>
+        <sys_update_name>sp_instance_vlist_18fb02f410d89510f877e0283ffbcdee</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <table>sc_req_item</table>
+        <title>Title</title>
+        <url/>
+        <widget_parameters><![CDATA[{
+	"auto_expand_request_item_stages": {
+		"value": "true",
+		"displayValue": "true"
+	}
+}]]></widget_parameters>
+    </sp_instance_vlist>
+    <sys_translated_text action="delete_multiple" query="documentkey=18fb02f410d89510f877e0283ffbcdee"/>
+</record_update>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_instance_link">
+    <sp_instance_link action="DELETE">
+        <active>true</active>
+        <class_name/>
+        <color>default</color>
+        <css/>
+        <glyph>briefcase</glyph>
+        <id/>
+        <kb_article/>
+        <kb_category/>
+        <kb_topic/>
+        <order>1</order>
+        <roles/>
+        <sc_cat_item/>
+        <sc_category/>
+        <short_description>Browse the catalog for services and items you need</short_description>
+        <size>md</size>
+        <sp_column display_value="1">4691143a41c41550f877fdd676e404f0</sp_column>
+        <sp_page display_value="sc_category">07261a2147132100ba13a5554ee49092</sp_page>
+        <sp_widget display_value="Icon Link">3caa67afcb13020000f8d856634c9c2e</sp_widget>
+        <sys_class_name>sp_instance_link</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-06-16 06:14:23</sys_created_on>
+        <sys_id>4a91143a41c41550f877fdd676e404f2</sys_id>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_name>Order Food</sys_name>
+        <sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</sys_scope>
+        <sys_update_name>sp_instance_link_4a91143a41c41550f877fdd676e404f2</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-06-21 21:35:16</sys_updated_on>
+        <title>Order Food</title>
+        <type>page</type>
+        <url/>
+        <widget_parameters><![CDATA[{
+	"template": {
+		"value": "Color Box",
+		"displayValue": "Color Box"
+	},
+	"link_template": {
+		"value": "Circle Icon",
+		"displayValue": "Circle Icon"
+	}
+}]]></widget_parameters>
+    </sp_instance_link>
+    <sys_translated_text action="DELETE" query="documentkey=4a91143a41c41550f877fdd676e404f2"/>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</application>
+        <file_path/>
+        <instance_id>c0b26ae9f0330110f87765368869fbdd</instance_id>
+        <instance_name>instance</instance_name>
+        <name>sp_instance_link_4a91143a41c41550f877fdd676e404f2</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sp_instance_link"&gt;&lt;sp_instance_link action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;class_name/&gt;&lt;color&gt;default&lt;/color&gt;&lt;css/&gt;&lt;glyph&gt;briefcase&lt;/glyph&gt;&lt;id/&gt;&lt;kb_article/&gt;&lt;kb_category/&gt;&lt;kb_topic/&gt;&lt;order&gt;1&lt;/order&gt;&lt;roles/&gt;&lt;sc_cat_item/&gt;&lt;sc_category/&gt;&lt;short_description&gt;Browse the catalog for services and items you need&lt;/short_description&gt;&lt;size&gt;md&lt;/size&gt;&lt;sp_column display_value="1"&gt;4691143a41c41550f877fdd676e404f0&lt;/sp_column&gt;&lt;sp_page display_value="sc_category"&gt;07261a2147132100ba13a5554ee49092&lt;/sp_page&gt;&lt;sp_widget display_value="Icon Link"&gt;3caa67afcb13020000f8d856634c9c2e&lt;/sp_widget&gt;&lt;sys_class_name&gt;sp_instance_link&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2022-06-16 06:14:23&lt;/sys_created_on&gt;&lt;sys_id&gt;4a91143a41c41550f877fdd676e404f2&lt;/sys_id&gt;&lt;sys_mod_count&gt;4&lt;/sys_mod_count&gt;&lt;sys_name&gt;Order Food&lt;/sys_name&gt;&lt;sys_package display_value="Restaurant Management" source="x_snc_restaurant_m"&gt;f9aae16741730910f877fdd676e404cf&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Restaurant Management"&gt;f9aae16741730910f877fdd676e404cf&lt;/sys_scope&gt;&lt;sys_update_name&gt;sp_instance_link_4a91143a41c41550f877fdd676e404f2&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2022-06-21 21:35:16&lt;/sys_updated_on&gt;&lt;title&gt;Order Food&lt;/title&gt;&lt;type&gt;page&lt;/type&gt;&lt;url/&gt;&lt;widget_parameters&gt;&lt;![CDATA[{
+	"template": {
+		"value": "Color Box",
+		"displayValue": "Color Box"
+	},
+	"link_template": {
+		"value": "Circle Icon",
+		"displayValue": "Circle Icon"
+	}
+}]]&gt;&lt;/widget_parameters&gt;&lt;/sp_instance_link&gt;&lt;sys_translated_text action="delete_multiple" query="documentkey=4a91143a41c41550f877fdd676e404f2"/&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>-1811278854</payload_hash>
+        <record_name>Order Food</record_name>
+        <reverted_from/>
+        <source>bdaae16741730910f877fdd676e404d1</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-06-21 21:35:16</sys_created_on>
+        <sys_id>d054d1e810d45510f877e0283ffbcd4c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1818830eb370000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-06-21 21:35:16</sys_updated_on>
+        <type>Instance with Link</type>
+        <update_guid>5c54d1e80ed45510055b9bb553bc344b</update_guid>
+        <update_guid_history>5c54d1e80ed45510055b9bb553bc344b:-1811278854,5c541d28f5d45510e5e09313ce7f5669:422797798,54359d5720481110da6148d8df49ec9a:-1811278854,bc8658fa34c41550f2b1e0575e659ad1:-1876038855,4a91143a01c41550ffe6469be60c84f4:437423591</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Order Food">8c6419a810d45510f877e0283ffbcdd0</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-06-21 21:35:31</sys_created_on>
+        <sys_db_object display_value="" name="sp_instance_link">sp_instance_link</sys_db_object>
+        <sys_id>79544a4e951048108f89e7682de2e5e4</sys_id>
+        <sys_metadata>4a91143a41c41550f877fdd676e404f2</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Order Food</sys_name>
+        <sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</sys_scope>
+        <sys_scope_delete display_value="">2fc304b5326340dba29f505a63b222c1</sys_scope_delete>
+        <sys_update_name>sp_instance_link_4a91143a41c41550f877fdd676e404f2</sys_update_name>
+        <sys_update_version display_value="sp_instance_link_4a91143a41c41550f877fdd676e404f2">d054d1e810d45510f877e0283ffbcd4c</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+    </sys_metadata_delete>
+</record_update>

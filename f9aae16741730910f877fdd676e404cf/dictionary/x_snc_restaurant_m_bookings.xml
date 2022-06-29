@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="bc20c05841489910f877fdd676e4049c" label="Bookings" max_length="40" name="x_snc_restaurant_m_bookings" type="collection">
+        <element label="Capacity" max_length="40" name="capacity" type="integer"/>
+        <element label="Customer" max_length="32" name="customer" reference="sys_user" type="reference"/>
+        <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
+        <element label="Start TIme" max_length="40" name="start_time" type="glide_date_time"/>
+        <element choice="3" label="Status" max_length="40" name="status" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Active" value="active"/>
+                <element inactive_on_update="false" label="Billed" value="billed"/>
+                <element inactive_on_update="false" label="Paid" value="paid"/>
+            </choice>
+        </element>
+        <element label="Table" max_length="32" name="table" reference="x_snc_restaurant_m_dining_table" type="reference"/>
+        <index name="index">
+            <element name="customer"/>
+        </index>
+        <index name="index2">
+            <element name="table"/>
+        </index>
+    </element>
+</database>

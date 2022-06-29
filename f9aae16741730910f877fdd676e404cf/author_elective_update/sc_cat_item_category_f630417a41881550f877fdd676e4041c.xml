@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sc_cat_item_category">
+    <sc_cat_item_category action="DELETE">
+        <sc_cat_item display_value="Order Item Record Producer">d0cf783a41881550f877fdd676e40495</sc_cat_item>
+        <sc_category display_value="Main Course">9ba27bde4144d150f877fdd676e40483</sc_category>
+        <sys_class_name>sc_cat_item_category</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-06-16 09:38:09</sys_created_on>
+        <sys_id>f630417a41881550f877fdd676e4041c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Main Course.Order Item Record Producer</sys_name>
+        <sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</sys_scope>
+        <sys_update_name>sc_cat_item_category_f630417a41881550f877fdd676e4041c</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-06-16 09:38:09</sys_updated_on>
+    </sc_cat_item_category>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</application>
+        <file_path/>
+        <instance_id>c0b26ae9f0330110f87765368869fbdd</instance_id>
+        <instance_name>instance</instance_name>
+        <name>sc_cat_item_category_f630417a41881550f877fdd676e4041c</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sc_cat_item_category"><sc_cat_item_category action="INSERT_OR_UPDATE"><sc_cat_item display_value="Order Item Record Producer">d0cf783a41881550f877fdd676e40495</sc_cat_item><sc_category display_value="Main Course">9ba27bde4144d150f877fdd676e40483</sc_category><sys_class_name>sc_cat_item_category</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2022-06-16 09:38:09</sys_created_on><sys_id>f630417a41881550f877fdd676e4041c</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Main Course.Order Item Record Producer</sys_name><sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package><sys_policy/><sys_scope display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</sys_scope><sys_update_name>sc_cat_item_category_f630417a41881550f877fdd676e4041c</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2022-06-16 09:38:09</sys_updated_on></sc_cat_item_category></record_update>]]></payload>
+        <payload_hash>-1231754805</payload_hash>
+        <record_name>Main Course.Order Item Record Producer</record_name>
+        <reverted_from/>
+        <source>bdaae16741730910f877fdd676e404d1</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-06-16 09:38:09</sys_created_on>
+        <sys_id>0730417a41881550f877fdd676e40420</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1816be0955e0000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-06-16 09:38:09</sys_updated_on>
+        <type>Catalog Item Category</type>
+        <update_guid>4f30417a02881550dd1b107cd3e34a1f</update_guid>
+        <update_guid_history>4f30417a02881550dd1b107cd3e34a1f:-1231754805</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Main Course.Order Item Record Producer">df1b95a010185510f877e0283ffbcda9</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-06-21 22:04:58</sys_created_on>
+        <sys_db_object display_value="" name="sc_cat_item_category">sc_cat_item_category</sys_db_object>
+        <sys_id>152a9a16c39842af8772bd056a4e5811</sys_id>
+        <sys_metadata>f630417a41881550f877fdd676e4041c</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Main Course.Order Item Record Producer</sys_name>
+        <sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</sys_scope>
+        <sys_scope_delete display_value="">2fc304b5326340dba29f505a63b222c1</sys_scope_delete>
+        <sys_update_name>sc_cat_item_category_f630417a41881550f877fdd676e4041c</sys_update_name>
+        <sys_update_version display_value="sc_cat_item_category_f630417a41881550f877fdd676e4041c">0730417a41881550f877fdd676e40420</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+    </sys_metadata_delete>
+</record_update>

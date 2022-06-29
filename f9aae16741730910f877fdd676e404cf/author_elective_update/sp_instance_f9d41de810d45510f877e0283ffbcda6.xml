@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_instance">
+    <sp_instance action="DELETE">
+        <active>true</active>
+        <class_name/>
+        <color>default</color>
+        <css/>
+        <glyph/>
+        <id/>
+        <order>2</order>
+        <roles/>
+        <short_description/>
+        <size>md</size>
+        <sp_column display_value="1">b1d41de810d45510f877e0283ffbcda0</sp_column>
+        <sp_widget display_value="KB Top Rated">3c817b52cb30020000f8d856634c9cfb</sp_widget>
+        <sys_class_name>sp_instance</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-06-21 21:37:33</sys_created_on>
+        <sys_id>f9d41de810d45510f877e0283ffbcda6</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>Top Rated Articles</sys_name>
+        <sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</sys_scope>
+        <sys_update_name>sp_instance_f9d41de810d45510f877e0283ffbcda6</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-06-21 21:40:47</sys_updated_on>
+        <title>Top Rated Articles</title>
+        <url/>
+        <widget_parameters/>
+    </sp_instance>
+    <sys_translated_text action="DELETE" query="documentkey=f9d41de810d45510f877e0283ffbcda6"/>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</application>
+        <file_path/>
+        <instance_id>c0b26ae9f0330110f87765368869fbdd</instance_id>
+        <instance_name>instance</instance_name>
+        <name>sp_instance_f9d41de810d45510f877e0283ffbcda6</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_instance"><sp_instance action="INSERT_OR_UPDATE"><active>true</active><class_name/><color>default</color><css/><glyph/><id/><order>2</order><roles/><short_description/><size>md</size><sp_column display_value="1">b1d41de810d45510f877e0283ffbcda0</sp_column><sp_widget display_value="KB Top Rated">3c817b52cb30020000f8d856634c9cfb</sp_widget><sys_class_name>sp_instance</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2022-06-21 21:37:33</sys_created_on><sys_id>f9d41de810d45510f877e0283ffbcda6</sys_id><sys_mod_count>2</sys_mod_count><sys_name>Top Rated Articles</sys_name><sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package><sys_policy/><sys_scope display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</sys_scope><sys_update_name>sp_instance_f9d41de810d45510f877e0283ffbcda6</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2022-06-21 21:40:47</sys_updated_on><title>Top Rated Articles</title><url/><widget_parameters/></sp_instance><sys_translated_text action="delete_multiple" query="documentkey=f9d41de810d45510f877e0283ffbcda6"/></record_update>]]></payload>
+        <payload_hash>1484982576</payload_hash>
+        <record_name>Top Rated Articles</record_name>
+        <reverted_from/>
+        <source>bdaae16741730910f877fdd676e404d1</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-06-21 21:40:47</sys_created_on>
+        <sys_id>8995d92c10d45510f877e0283ffbcd1e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1818835f7c00000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-06-21 21:40:47</sys_updated_on>
+        <type>Instance</type>
+        <update_guid>0595d92c45d455103e58fd5fde5a001e</update_guid>
+        <update_guid_history>0595d92c45d455103e58fd5fde5a001e:1484982576,f185592c55d45510bca6dc7580be227b:2005551217,31d41de839d4551045fbbd07b886aaa8:1484982576</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Top Rated Articles">ad95912c10d45510f877e0283ffbcdb0</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-06-21 21:40:48</sys_created_on>
+        <sys_db_object display_value="" name="sp_instance">sp_instance</sys_db_object>
+        <sys_id>145331d4805a4c768584ec62576b2584</sys_id>
+        <sys_metadata>f9d41de810d45510f877e0283ffbcda6</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Top Rated Articles</sys_name>
+        <sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</sys_scope>
+        <sys_scope_delete display_value="">2fc304b5326340dba29f505a63b222c1</sys_scope_delete>
+        <sys_update_name>sp_instance_f9d41de810d45510f877e0283ffbcda6</sys_update_name>
+        <sys_update_version display_value="sp_instance_f9d41de810d45510f877e0283ffbcda6">8995d92c10d45510f877e0283ffbcd1e</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+    </sys_metadata_delete>
+</record_update>

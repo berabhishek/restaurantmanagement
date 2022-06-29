@@ -6,7 +6,7 @@
         <availability>on_desktop</availability>
         <billable>false</billable>
         <can_cancel>false</can_cancel>
-        <category/>
+        <category display_value="Main Course">9ba27bde4144d150f877fdd676e40483</category>
         <checked_out>false</checked_out>
         <conversational_render_type>conversation</conversational_render_type>
         <cost>0</cost>
@@ -69,7 +69,7 @@
 * To access the variables, use `producer.var1` where var1 is the name of the variable
 * To access the Record Producer use `cat_item`
 */]]></save_script>
-        <sc_catalogs/>
+        <sc_catalogs>77f9a7564144d150f877fdd676e40491</sc_catalogs>
         <sc_ic_item_staging/>
         <sc_ic_version/>
         <sc_template/>
@@ -79,8 +79,15 @@
 * Don't use `current.setValue('sys_class_name', 'xxx')` as this will trigger reparent flow and can cause data loss
 * Avoid `current.setAbortAction()` and generate a separate record
 * Use `producer.var1` to access variables
-*/]]></script>
-        <short_description>Allow Customers to pay bill</short_description>
+*/
+var bookings = new GlideRecord("x_snc_restaurant_m_bookings");
+bookings.addQuery("customer", gs.getUserID());
+bookings.addQuery("status", "!=" , "paid");
+bookings.query();
+if (bookings.next()) {
+	current.setValue("booking", bookings.sys_id);
+}]]></script>
+        <short_description>Request Bill Payment</short_description>
         <show_variable_help_on_load>false</show_variable_help_on_load>
         <start_closed>false</start_closed>
         <state>published</state>
@@ -88,14 +95,13 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2022-06-22 19:09:34</sys_created_on>
         <sys_id>6c6cf9b410989510f877e0283ffbcdea</sys_id>
-        <sys_mod_count>4</sys_mod_count>
+        <sys_mod_count>19</sys_mod_count>
         <sys_name>Pay Restaurant Bill</sys_name>
         <sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package>
         <sys_policy/>
         <sys_scope display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</sys_scope>
         <sys_update_name>sc_cat_item_producer_6c6cf9b410989510f877e0283ffbcdea</sys_update_name>
-        <sys_updated_by>system</sys_updated_by>
-        <sys_updated_on>2022-06-22 19:12:57</sys_updated_on>
+        <sys_updated_by>admin</sys_updated_by>
         <table_name>x_snc_restaurant_m_cashiertask</table_name>
         <taxonomy_topic/>
         <template/>

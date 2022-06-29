@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sc_cat_item_category">
+    <sc_cat_item_category action="INSERT_OR_UPDATE">
+        <sc_cat_item display_value="Pay Restaurant Bill">6c6cf9b410989510f877e0283ffbcdea</sc_cat_item>
+        <sc_category display_value="Main Course">9ba27bde4144d150f877fdd676e40483</sc_category>
+        <sys_class_name>sc_cat_item_category</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-06-22 19:28:33</sys_created_on>
+        <sys_id>f1e046f810989510f877e0283ffbcdac</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Main Course.Pay Restaurant Bill</sys_name>
+        <sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</sys_scope>
+        <sys_update_name>sc_cat_item_category_f1e046f810989510f877e0283ffbcdac</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+    </sc_cat_item_category>
+</record_update>

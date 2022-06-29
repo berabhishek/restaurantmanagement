@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sc_cat_item_catalog">
+    <sc_cat_item_catalog action="INSERT_OR_UPDATE">
+        <sc_cat_item display_value="Jalebi">d279f1f010989510f877e0283ffbcd5c</sc_cat_item>
+        <sc_catalog display_value="Restaurant Management Catalog">77f9a7564144d150f877fdd676e40491</sc_catalog>
+        <sys_class_name>sc_cat_item_catalog</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-06-22 18:57:42</sys_created_on>
+        <sys_id>8ed97df010989510f877e0283ffbcd85</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Restaurant Management Catalog.Jalebi</sys_name>
+        <sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</sys_scope>
+        <sys_update_name>sc_cat_item_catalog_8ed97df010989510f877e0283ffbcd85</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+    </sc_cat_item_catalog>
+</record_update>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_properties">
+    <sys_properties action="INSERT_OR_UPDATE">
+        <choices/>
+        <description>Log AWA work item routing and assignments in the system log.&#13;
+</description>
+        <ignore_cache>true</ignore_cache>
+        <is_private>false</is_private>
+        <name>com.snc.awa.syslog.enabled</name>
+        <read_roles/>
+        <suffix> com.snc.awa.syslog.enabled</suffix>
+        <sys_class_name>sys_properties</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-06-17 23:19:11</sys_created_on>
+        <sys_id>d495411710081110f877e0283ffbcdb3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>com.snc.awa.syslog.enabled</sys_name>
+        <sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</sys_scope>
+        <sys_update_name>sys_properties_d495411710081110f877e0283ffbcdb3</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <type>boolean</type>
+        <value>true</value>
+        <write_roles/>
+    </sys_properties>
+    <sys_translated_text action="delete_multiple" query="documentkey=d495411710081110f877e0283ffbcdb3"/>
+</record_update>

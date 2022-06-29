@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_embedded_help_role">
+    <sys_embedded_help_role action="INSERT_OR_UPDATE">
+        <order>1000</order>
+        <role display_value="x_snc_restaurant_m.restaurant_capacity_user" name="x_snc_restaurant_m.restaurant_capacity_user">c98dd7ee4d549510f87791a4a837f32d</role>
+        <sys_class_name>sys_embedded_help_role</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-06-28 12:42:33</sys_created_on>
+        <sys_id>918dd7ee4d549510f87791a4a837f331</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>c98dd7ee4d549510f87791a4a837f32d</sys_name>
+        <sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</sys_scope>
+        <sys_update_name>sys_embedded_help_role_918dd7ee4d549510f87791a4a837f331</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+    </sys_embedded_help_role>
+</record_update>

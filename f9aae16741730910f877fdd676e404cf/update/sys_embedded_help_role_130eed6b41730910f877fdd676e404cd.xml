@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_embedded_help_role">
+    <sys_embedded_help_role action="INSERT_OR_UPDATE">
+        <order>1000</order>
+        <role display_value="x_snc_restaurant_m.chef" name="x_snc_restaurant_m.chef">2eede1ab41730910f877fdd676e40469</role>
+        <sys_class_name>sys_embedded_help_role</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-06-06 10:38:05</sys_created_on>
+        <sys_id>130eed6b41730910f877fdd676e404cd</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>2eede1ab41730910f877fdd676e40469</sys_name>
+        <sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</sys_scope>
+        <sys_update_name>sys_embedded_help_role_130eed6b41730910f877fdd676e404cd</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+    </sys_embedded_help_role>
+</record_update>

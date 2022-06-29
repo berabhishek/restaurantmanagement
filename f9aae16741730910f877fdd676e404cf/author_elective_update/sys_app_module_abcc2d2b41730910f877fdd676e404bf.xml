@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_app_module">
+    <sys_app_module action="DELETE">
+        <active>true</active>
+        <application display_value="Order Item Task">27cc2d2b41730910f877fdd676e404bd</application>
+        <assessment/>
+        <device_type/>
+        <filter/>
+        <hint/>
+        <homepage/>
+        <image/>
+        <link_type>LIST</link_type>
+        <map_page/>
+        <mobile_title>Order Item Tasks</mobile_title>
+        <mobile_view_name>Mobile</mobile_view_name>
+        <name>x_snc_restaurant_m_order_item_task</name>
+        <order/>
+        <override_menu_roles>false</override_menu_roles>
+        <query/>
+        <report/>
+        <roles>x_snc_restaurant_m.order_item_task_user</roles>
+        <sys_class_name>sys_app_module</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-06-06 10:32:38</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>abcc2d2b41730910f877fdd676e404bf</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>Order Item Tasks</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</sys_scope>
+        <sys_update_name>sys_app_module_abcc2d2b41730910f877fdd676e404bf</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-06-06 10:45:47</sys_updated_on>
+        <timeline_page/>
+        <title>Order Item Tasks</title>
+        <uncancelable>false</uncancelable>
+        <view_name/>
+        <window_name/>
+    </sys_app_module>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</application>
+        <file_path/>
+        <instance_id>c0b26ae9f0330110f87765368869fbdd</instance_id>
+        <instance_name>instance</instance_name>
+        <name>sys_app_module_abcc2d2b41730910f877fdd676e404bf</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_app_module"><sys_app_module action="INSERT_OR_UPDATE"><active>true</active><application display_value="Order Item Task">27cc2d2b41730910f877fdd676e404bd</application><assessment/><device_type/><filter/><hint/><homepage/><image/><link_type>LIST</link_type><map_page/><mobile_title>Order Item Tasks</mobile_title><mobile_view_name>Mobile</mobile_view_name><name>x_snc_restaurant_m_order_item_task</name><order/><override_menu_roles>false</override_menu_roles><query/><report/><roles>x_snc_restaurant_m.order_item_task_user</roles><sys_class_name>sys_app_module</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2022-06-06 10:32:38</sys_created_on><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>abcc2d2b41730910f877fdd676e404bf</sys_id><sys_mod_count>2</sys_mod_count><sys_name>Order Item Tasks</sys_name><sys_overrides/><sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package><sys_policy/><sys_scope display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</sys_scope><sys_update_name>sys_app_module_abcc2d2b41730910f877fdd676e404bf</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2022-06-06 10:45:47</sys_updated_on><timeline_page/><title>Order Item Tasks</title><uncancelable>false</uncancelable><view_name/><window_name/></sys_app_module></record_update>]]></payload>
+        <payload_hash>-1450175882</payload_hash>
+        <record_name>Order Item Tasks</record_name>
+        <reverted_from/>
+        <source>bdaae16741730910f877fdd676e404d1</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-06-06 10:45:47</sys_created_on>
+        <sys_id>d0dfa52f41730910f877fdd676e40497</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>181389ee9240000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-06-06 10:45:47</sys_updated_on>
+        <type>Module</type>
+        <update_guid>4cdfa52f1b73091045e3718df0863296</update_guid>
+        <update_guid_history>4cdfa52f1b73091045e3718df0863296:-1450175882,6deced2b3273091002f40cc21dd4405d:-552442594,63cc2d2b727309109f57fe3631ef63c1:-1450175882</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Order Item Tasks">5b50356f41730910f877fdd676e4041a</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-06-06 10:48:11</sys_created_on>
+        <sys_db_object display_value="" name="sys_app_module">sys_app_module</sys_db_object>
+        <sys_id>36122c929a0a417c94377ad85e18e290</sys_id>
+        <sys_metadata>abcc2d2b41730910f877fdd676e404bf</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Order Item Tasks</sys_name>
+        <sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</sys_scope>
+        <sys_scope_delete display_value="">2fc304b5326340dba29f505a63b222c1</sys_scope_delete>
+        <sys_update_name>sys_app_module_abcc2d2b41730910f877fdd676e404bf</sys_update_name>
+        <sys_update_version display_value="sys_app_module_abcc2d2b41730910f877fdd676e404bf">d0dfa52f41730910f877fdd676e40497</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+    </sys_metadata_delete>
+</record_update>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_instance_link">
+    <sp_instance_link action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <class_name/>
+        <color>default</color>
+        <css/>
+        <glyph>money</glyph>
+        <id/>
+        <kb_article/>
+        <kb_category/>
+        <kb_topic/>
+        <order>1</order>
+        <roles/>
+        <sc_cat_item/>
+        <sc_category display_value="Catalog Processing">7c9ce9d9eb030100d4360c505206fe1f</sc_category>
+        <short_description>Pay for the services</short_description>
+        <size>md</size>
+        <sp_column display_value="3">71d41de810d45510f877e0283ffbcd98</sp_column>
+        <sp_page display_value="requests">31ed6a51d7130200a9ad1e173e24d479</sp_page>
+        <sp_widget display_value="Icon Link">3caa67afcb13020000f8d856634c9c2e</sp_widget>
+        <sys_class_name>sp_instance_link</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-06-21 21:37:33</sys_created_on>
+        <sys_id>b1d41de810d45510f877e0283ffbcd9a</sys_id>
+        <sys_mod_count>6</sys_mod_count>
+        <sys_name>Easy Pay</sys_name>
+        <sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</sys_scope>
+        <sys_update_name>sp_instance_link_b1d41de810d45510f877e0283ffbcd9a</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <title>Easy Pay</title>
+        <type>url</type>
+        <url>https://k8s0316038-node1.thunder.lab3.service-now.com/restaurant?id=sc_cat_item&amp;sys_id=6c6cf9b410989510f877e0283ffbcdea</url>
+        <widget_parameters><![CDATA[{
+	"link_template": {
+		"value": "Circle Icon",
+		"displayValue": "Circle Icon"
+	}
+}]]></widget_parameters>
+    </sp_instance_link>
+    <sys_translated_text action="delete_multiple" query="documentkey=b1d41de810d45510f877e0283ffbcd9a"/>
+</record_update>

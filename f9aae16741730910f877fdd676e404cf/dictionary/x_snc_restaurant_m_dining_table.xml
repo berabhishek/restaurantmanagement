@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="073ba5a741730910f877fdd676e404dd" label="Dining Table" max_length="40" name="x_snc_restaurant_m_dining_table" type="collection">
+        <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" display="true" label="Table Number" max_length="40" name="number" type="string"/>
+        <element label="Occupied" max_length="40" name="occupied" type="boolean"/>
+        <element label="Restaurant" max_length="32" name="restaurant" reference="x_snc_restaurant_m_restaurant_capacity" type="reference"/>
+        <index name="index">
+            <element name="restaurant"/>
+        </index>
+    </element>
+</database>

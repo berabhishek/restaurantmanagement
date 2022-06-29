@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_instance">
+    <sp_instance action="DELETE">
+        <active>true</active>
+        <class_name/>
+        <color>default</color>
+        <css/>
+        <glyph/>
+        <id/>
+        <order>2</order>
+        <roles/>
+        <short_description/>
+        <size>md</size>
+        <sp_column display_value="2">3dd41de810d45510f877e0283ffbcda8</sp_column>
+        <sp_widget display_value="My Surveys">04b1cc07c3231200e44574e1c1d3ae96</sp_widget>
+        <sys_class_name>sp_instance</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-06-21 21:37:33</sys_created_on>
+        <sys_id>3dd41de810d45510f877e0283ffbcdaa</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>My Surveys</sys_name>
+        <sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</sys_scope>
+        <sys_update_name>sp_instance_3dd41de810d45510f877e0283ffbcdaa</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-06-21 21:37:33</sys_updated_on>
+        <title>My Surveys</title>
+        <url/>
+        <widget_parameters/>
+    </sp_instance>
+    <sys_translated_text action="DELETE" query="documentkey=3dd41de810d45510f877e0283ffbcdaa"/>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</application>
+        <file_path/>
+        <instance_id>c0b26ae9f0330110f87765368869fbdd</instance_id>
+        <instance_name>instance</instance_name>
+        <name>sp_instance_3dd41de810d45510f877e0283ffbcdaa</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_instance"><sp_instance action="INSERT_OR_UPDATE"><active>true</active><class_name/><color>default</color><css/><glyph/><id/><order>2</order><roles/><short_description/><size>md</size><sp_column display_value="2">3dd41de810d45510f877e0283ffbcda8</sp_column><sp_widget display_value="My Surveys">04b1cc07c3231200e44574e1c1d3ae96</sp_widget><sys_class_name>sp_instance</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2022-06-21 21:37:33</sys_created_on><sys_id>3dd41de810d45510f877e0283ffbcdaa</sys_id><sys_mod_count>0</sys_mod_count><sys_name>My Surveys</sys_name><sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package><sys_policy/><sys_scope display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</sys_scope><sys_update_name>sp_instance_3dd41de810d45510f877e0283ffbcdaa</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2022-06-21 21:37:33</sys_updated_on><title>My Surveys</title><url/><widget_parameters/></sp_instance><sys_translated_text action="delete_multiple" query="documentkey=3dd41de810d45510f877e0283ffbcdaa"/></record_update>]]></payload>
+        <payload_hash>312121549</payload_hash>
+        <record_name>My Surveys</record_name>
+        <reverted_from/>
+        <source>bdaae16741730910f877fdd676e404d1</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-06-21 21:37:33</sys_created_on>
+        <sys_id>79d41de810d45510f877e0283ffbcdac</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1818833029d0000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-06-21 21:37:33</sys_updated_on>
+        <type>Instance</type>
+        <update_guid>b1d41de834d45510058ba2dd5b9fddac</update_guid>
+        <update_guid_history>b1d41de834d45510058ba2dd5b9fddac:312121549</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="My Surveys">2585592c10d45510f877e0283ffbcd5b</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-06-21 21:40:33</sys_created_on>
+        <sys_db_object display_value="" name="sp_instance">sp_instance</sys_db_object>
+        <sys_id>33e6e48afb064c84ad40885d0ccc4b04</sys_id>
+        <sys_metadata>3dd41de810d45510f877e0283ffbcdaa</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>My Surveys</sys_name>
+        <sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</sys_scope>
+        <sys_scope_delete display_value="">2fc304b5326340dba29f505a63b222c1</sys_scope_delete>
+        <sys_update_name>sp_instance_3dd41de810d45510f877e0283ffbcdaa</sys_update_name>
+        <sys_update_version display_value="sp_instance_3dd41de810d45510f877e0283ffbcdaa">79d41de810d45510f877e0283ffbcdac</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+    </sys_metadata_delete>
+</record_update>

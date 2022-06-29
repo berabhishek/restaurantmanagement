@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="fb2c4dbc10949510f877e0283ffbcd12" extends="task" label="Cashier Task" max_length="40" name="x_snc_restaurant_m_cashiertask" type="collection">
+        <element label="Amount" max_length="40" name="amount" type="currency"/>
+        <element label="Booking" max_length="32" name="booking" reference="x_snc_restaurant_m_bookings" type="reference"/>
+    </element>
+</database>

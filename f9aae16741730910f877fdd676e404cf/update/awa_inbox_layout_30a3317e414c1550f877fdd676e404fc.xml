@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="awa_inbox_layout">
+    <awa_inbox_layout action="INSERT_OR_UPDATE">
+        <card_layout><![CDATA[<img src="awa_card_layout_guide.png" width="349" height="300" />]]></card_layout>
+        <condition/>
+        <field_1>number</field_1>
+        <field_2/>
+        <field_3/>
+        <field_4/>
+        <field_5/>
+        <is_default>true</is_default>
+        <name>Default Restaurant service channel layout</name>
+        <order>1000000</order>
+        <service_channel display_value="Restaurant service channel">5083b57e414c1550f877fdd676e4048a</service_channel>
+        <short_description>Default inbox layout for the Restaurant service channel Service Channel</short_description>
+        <sys_class_name>awa_inbox_layout</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-06-16 13:22:44</sys_created_on>
+        <sys_id>30a3317e414c1550f877fdd676e404fc</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Default Restaurant service channel layout</sys_name>
+        <sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</sys_scope>
+        <sys_update_name>awa_inbox_layout_30a3317e414c1550f877fdd676e404fc</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+    </awa_inbox_layout>
+</record_update>

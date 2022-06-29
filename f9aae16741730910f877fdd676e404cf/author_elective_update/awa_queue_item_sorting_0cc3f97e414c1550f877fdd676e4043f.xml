@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="awa_queue_item_sorting">
+    <awa_queue_item_sorting action="DELETE">
+        <field>sys_created_on</field>
+        <order>1000</order>
+        <queue display_value="Restaurant Queue">e3a3797e414c1550f877fdd676e404dd</queue>
+        <sort_direction>ascending</sort_direction>
+        <sys_class_name>awa_queue_item_sorting</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-06-16 13:23:14</sys_created_on>
+        <sys_id>0cc3f97e414c1550f877fdd676e4043f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>sys_created_on</sys_name>
+        <sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</sys_scope>
+        <sys_update_name>awa_queue_item_sorting_0cc3f97e414c1550f877fdd676e4043f</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-06-16 13:23:14</sys_updated_on>
+    </awa_queue_item_sorting>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</application>
+        <file_path/>
+        <instance_id>c0b26ae9f0330110f87765368869fbdd</instance_id>
+        <instance_name>instance</instance_name>
+        <name>awa_queue_item_sorting_0cc3f97e414c1550f877fdd676e4043f</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="awa_queue_item_sorting"><awa_queue_item_sorting action="INSERT_OR_UPDATE"><field>sys_created_on</field><order>1000</order><queue display_value="Restaurant Queue">e3a3797e414c1550f877fdd676e404dd</queue><sort_direction>ascending</sort_direction><sys_class_name>awa_queue_item_sorting</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2022-06-16 13:23:14</sys_created_on><sys_id>0cc3f97e414c1550f877fdd676e4043f</sys_id><sys_mod_count>0</sys_mod_count><sys_name>sys_created_on</sys_name><sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package><sys_policy/><sys_scope display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</sys_scope><sys_update_name>awa_queue_item_sorting_0cc3f97e414c1550f877fdd676e4043f</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2022-06-16 13:23:14</sys_updated_on></awa_queue_item_sorting></record_update>]]></payload>
+        <payload_hash>-132585308</payload_hash>
+        <record_name>sys_created_on</record_name>
+        <reverted_from/>
+        <source>bdaae16741730910f877fdd676e404d1</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-06-16 13:23:14</sys_created_on>
+        <sys_id>8cc3f97e414c1550f877fdd676e40441</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1816caea6c80000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-06-16 13:23:14</sys_updated_on>
+        <type>Work Item Sort Order</type>
+        <update_guid>c4c3f97e144c15503385f6c1f3951841</update_guid>
+        <update_guid_history>c4c3f97e144c15503385f6c1f3951841:-132585308</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="sys_created_on">b7f8011b10081110f877e0283ffbcd3f</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-06-17 23:33:24</sys_created_on>
+        <sys_db_object display_value="" name="awa_queue_item_sorting">awa_queue_item_sorting</sys_db_object>
+        <sys_id>1529cd350f404205929cb7b354a00e41</sys_id>
+        <sys_metadata>0cc3f97e414c1550f877fdd676e4043f</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>sys_created_on</sys_name>
+        <sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</sys_scope>
+        <sys_scope_delete display_value="">2fc304b5326340dba29f505a63b222c1</sys_scope_delete>
+        <sys_update_name>awa_queue_item_sorting_0cc3f97e414c1550f877fdd676e4043f</sys_update_name>
+        <sys_update_version display_value="awa_queue_item_sorting_0cc3f97e414c1550f877fdd676e4043f">8cc3f97e414c1550f877fdd676e40441</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+    </sys_metadata_delete>
+</record_update>

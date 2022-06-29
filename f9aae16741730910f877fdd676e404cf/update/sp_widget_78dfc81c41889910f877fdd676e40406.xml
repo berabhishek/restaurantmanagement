@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller=function($scope, $q, $rootScope, $http, spUtil) {
+  /* widget controller */
+  var c = this;
+	var STATUS = ["NOT_BOOKED", "BOOKED", "ORDER_PLACED", "ORDER_COOKED", "ORDER_SERVED", "COMPLETED"];
+	c.data.cart = {};
+	var user_current_status = 0;
+	c.data.showingMenu = false;
+	c.data.userStatus = STATUS[user_current_status];
+	this.getCartTotal = function() {
+		var cart_total = 0;
+		Object.keys(c.data.cart).forEach(function (key) {
+			cart_total += c.data.cart[key] * c.data.menu[key].price;
+		});
+		return "$"+Math.round((cart_total + Number.EPSILON) * 100) / 100;
+	}
+	this.placeOrder = function() {
+		$rootScope.$emit("placeOrder");
+	}
+	this.removeItemFromCart = function(itemId) {
+		if (c.data.cart[itemId] === undefined) {
+			return;
+		}
+		c.data.cart[itemId] -= 1;
+		if (c.data.cart[itemId] === 0) {
+			delete c.data.cart[itemId];
+		}
+	}
+	this.addItemToCart = function(itemId) {
+		if(c.data.cart[itemId] === undefined) {
+			c.data.cart[itemId] = 0;
+		}
+		if (c.data.menu[itemId].available > c.data.cart[itemId]) {
+			c.data.cart[itemId] += 1;	
+		}
+		
+	}
+	this.booktable = function() {
+		$rootScope.$emit("booktable");
+	}
+	
+	this.showMenu = function() {
+		c.data.showingMenu = true;
+		$rootScope.$emit("showMenu");
+	}
+	
+//	this.getOrderHistory = function () {
+//		$rootScope.$emit("orderHistory");
+//	}
+	$rootScope.$on('booktable', function(event, data) {
+		c.server.get({
+			action: 'booktable',
+			capacity: 4
+		}).then(function(r) {
+			c.data.table = {};
+			c.data.table.number = r.data.table.number;
+		});
+	});
+	
+	
+	$rootScope.$on("showMenu", function(event, data) {
+		c.server.get({
+			action: 'showMenu'
+		}).then(function(r) {
+			c.data.menu = r.data.menuItems;
+		})
+	});
+	
+	$rootScope.$on("placeOrder", function() {
+		c.server.get({
+			action: 'placeOrder',
+			cart: c.data.cart
+		}).then(function(r) {
+			//console.log(r);			
+		})
+	});
+	
+	$rootScope.$on("orderHistory", function (event, data) {
+			c.server.get({
+				action: "orderHistory"
+			}).then(function(r) {
+					c.data.orderHistory = r.data.orderHistory;
+			});
+	});
+};
+
+]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.cart {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.cart td, .cart th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.cart tr:nth-child(even){background-color: #f2f2f2;}
+
+.cart tr:hover {background-color: #ddd;}
+
+.cart th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+
+.button {
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.button-success {
+	background-color: #4CAF50; /* Green */
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>true</has_preview>
+        <id>restaurant_booking_1</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>Restaurant Booking</name>
+        <option_schema/>
+        <public>true</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+	var restaurant = x_snc_restaurant_m.Restaurant_Utils;
+	data.booktable = restaurant;
+	
+	//get booking
+	var booking = new GlideRecord("x_snc_restaurant_m_bookings");
+	booking.addQuery("customer.sys_id", gs.getUserID());
+	booking.query();
+	data.booking = {
+		present: false
+	};
+	if (booking.next()) {
+		data.booking.present = true;
+		$sp.getRecordValues(data.booking, booking, "number, customer.first_name, customer.middle_name, customer.last_name, customer.email, table.number, table");
+		
+	}
+	if (input && input.capacity && input.action === "booktable") {
+		booking = new GlideRecord("x_snc_restaurant_m_bookings");
+		if (input.action === "booktable") {
+			booking.initialize();
+			booking.customer = gs.getUserID();
+			booking.capacity = input.capacity;
+			booking.insert();
+		}
+	}
+	data.menuItems = {};
+	if (input && input.action === "showMenu") {
+		var items = new GlideRecord("x_snc_restaurant_m_item");
+		items.addQuery("available", ">=", "1");
+		items.query();
+		while(items.next()) {
+			data.menuItems[items.getValue("sys_id")] = {
+				name: items.getValue("name"),
+				price: items.getValue("price"),
+				available: items.getValue("available"),
+				id: items.getValue("number"),
+				sys_id: items.getValue("sys_id")
+			};
+		}
+	}
+	
+	if (input && input.action === "placeOrder") {
+		var order = new GlideRecord("x_snc_restaurant_m_order");
+		order.initialize();
+		order.setValue("table", data.booking.table);
+		var orderId= order.insert();
+		Object.keys(input.cart).forEach(function(itemId) {
+			for(var i = 0 ; i < input.cart[itemId]; i++) {
+				var orderItem = new GlideRecord("x_snc_restaurant_m_order_item_task");
+				orderItem.initialize();
+				orderItem.setValue("menu_order", orderId);
+				orderItem.setValue("item", itemId);
+				orderItem.insert();
+			}
+		});
+		order.setValue("status", "placed");
+		order.update();
+	}
+	
+	data.orderHistory = [];
+	if (data && data.booking && data.booking.table) {
+		var orders = new GlideRecord("x_snc_restaurant_m_order");
+		orders.addQuery("table", data.booking.table);
+		orders.query();
+		console.log(data.booking.table);
+		while (orders.next()) {
+			var orderHistory = {};
+			$sp.getRecordValues(orderHistory, orders, "number, status, created");
+			data.orderHistory.push(orderHistory);
+		}
+	}
+	
+	
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-06-08 11:41:50</sys_created_on>
+        <sys_id>78dfc81c41889910f877fdd676e40406</sys_id>
+        <sys_mod_count>175</sys_mod_count>
+        <sys_name>Restaurant Booking</sys_name>
+        <sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</sys_scope>
+        <sys_update_name>sp_widget_78dfc81c41889910f877fdd676e40406</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <template><![CDATA[<div>
+<!-- your widget template -->
+  <div>
+    <!--<header>Current Status: {{data.userStatus}}</header> -->
+    <div ng-switch="data.booking.present">
+      <div ng-switch-when="true">
+        <div>
+       			{{data.booking.number}} - {{data.booking["customer.first_name"]}} {{data.booking["customer.middle_name"]}} {{data.booking["customer.last_name"]}} - {{data.booking["customer.email"]}} - {{data.booking["table.number"]}}   
+        </div>
+        <div ng-switch="data.showingMenu">
+          <button ng-switch-when="false" ng-click="c.showMenu()">Show Menu</button>
+          <div ng-switch-when="true">
+             <table class="cart">
+              <tr>
+                <th>Item</th>
+                <th>Price</th>
+                <th>Cart</th>
+              </tr>
+              <tr ng-repeat="item in c.data.menu">
+                <td>{{item.name}}</td>
+                <td>{{item.price}}</td>
+                <td >
+                	<span ng-if="c.data.cart[item.sys_id] === undefined">
+                    <button ng-click="c.addItemToCart(item.sys_id)">
+                      + Add
+                    </button>
+                  </span>
+                  <span ng-if="c.data.cart[item.sys_id] !== undefined">
+                  	<button ng-click="c.removeItemFromCart(item.sys_id)">
+                      -
+                    </button>
+                    {{c.data.cart[item.sys_id]}}
+                    <button ng-click="c.addItemToCart(item.sys_id)">
+                      +
+                    </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>Total</td>
+                <td></td>
+                <td>{{c.getCartTotal()}}</td>
+               </tr>
+        </table>
+           <div style="padding-top: 40px">
+            <button ng-click="c.placeOrder()" class="button button-success">
+              Place Order
+            </button>
+        </div>
+          </div>
+         <div>
+           
+           <h2>
+             Order History
+           </h2>
+           <div ng-switch="c.data.orderHistory.length">
+             <div ng-switch-when="0">
+               No Orders found
+             </div>
+             <div ng-switch-default>
+               <table class="cart">
+                 <tr>
+                 		<th>Order ID</th>
+                   	<th>Status</th>
+                 </tr>
+                 <tr ng-repeat="item in c.data.orderHistory">
+                 		<td>{{item.number}}</td>
+                   <td>{{item.status}}</td>
+                 </tr>
+               </table>
+             </div>
+           </div>
+           
+          </div>
+       
+      </div>
+       </div>
+  		<div ng-switch-default>No bookings found..
+      	<div>
+            <button ng-click="c.booktable()">
+    					Book Table
+  					</button>
+        </div>
+       
+      </div>
+      
+    </div>
+  
+  </div>
+</div>]]></template>
+    </sp_widget>
+</record_update>

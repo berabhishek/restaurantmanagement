@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_choice action="INSERT_OR_UPDATE" field="food" table="x_snc_restaurant_m_user_feedback" version="3">
+        <sys_choice_set action="INSERT_OR_UPDATE">
+            <element>food</element>
+            <name>x_snc_restaurant_m_user_feedback</name>
+            <sys_class_name>sys_choice_set</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2022-06-27 13:57:02</sys_created_on>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>food</sys_name>
+            <sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</sys_scope>
+            <sys_update_name>sys_choice_x_snc_restaurant_m_user_feedback_food</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+        </sys_choice_set>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>food</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Extremely Good</label>
+            <language>en</language>
+            <name>x_snc_restaurant_m_user_feedback</name>
+            <sequence>0</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2022-06-28 08:37:22</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <value>5</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>food</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Good</label>
+            <language>en</language>
+            <name>x_snc_restaurant_m_user_feedback</name>
+            <sequence>1</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2022-06-28 08:37:33</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <value>4</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>food</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Average</label>
+            <language>en</language>
+            <name>x_snc_restaurant_m_user_feedback</name>
+            <sequence>2</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2022-06-28 08:37:43</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <value>3</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>food</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Poor</label>
+            <language>en</language>
+            <name>x_snc_restaurant_m_user_feedback</name>
+            <sequence>3</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2022-06-28 08:38:00</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <value>2</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>food</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Extremely Poor</label>
+            <language>en</language>
+            <name>x_snc_restaurant_m_user_feedback</name>
+            <sequence>4</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2022-06-28 08:38:13</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <value>1</value>
+        </sys_choice>
+    </sys_choice>
+</record_update>
