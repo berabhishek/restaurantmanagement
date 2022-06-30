@@ -36,7 +36,6 @@
 	booking.addQuery("sys_id", current.booking.sys_id);
 	booking.query();
 	if (booking.next()) {
-		gs.addInfoMessage("clearing bookng");
 		booking.setValue("status", "paid");
 		booking.update();
 	} else {
@@ -50,7 +49,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>5f1551fc10d49510f877e0283ffbcd82</sys_id>
-        <sys_mod_count>6</sys_mod_count>
+        <sys_mod_count>1</sys_mod_count>
         <sys_name>Cash Paid Clear Booking Rule</sys_name>
         <sys_overrides/>
         <sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package>

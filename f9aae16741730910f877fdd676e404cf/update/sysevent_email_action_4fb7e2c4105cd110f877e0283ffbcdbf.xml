@@ -38,8 +38,8 @@
         <item_table/>
         <mandatory>false</mandatory>
         <message/>
-        <message_html><![CDATA[<p>Hi ${sys_created_by},</p>
-<p>Your order ${request_item.cat_item.name} X ${request_item.quantity} has been cooked.</p>]]></message_html>
+        <message_html><![CDATA[<p>Hi ${requested_for.first_name} ${requested_for.last_name},</p>
+<p>Your order <a href="https://k8s0316038-node1.thunder.lab3.service-now.com/restaurant?id=order_status&amp;table=sc_request&amp;sys_id=${request.sys_id}" target="_blank" rel="noopener">${request_item.cat_item.name} X ${request_item.quantity}</a> has been cooked.</p>]]></message_html>
         <message_list/>
         <message_text/>
         <name>Order Item Delivered Notification</name>
@@ -61,7 +61,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>4fb7e2c4105cd110f877e0283ffbcdbf</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>1</sys_mod_count>
         <sys_name>Order Item Delivered Notification</sys_name>
         <sys_overrides/>
         <sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sc_cat_item_category">
+    <sc_cat_item_category action="DELETE">
+        <sc_cat_item display_value="Pay Restaurant Bill">6c6cf9b410989510f877e0283ffbcdea</sc_cat_item>
+        <sc_category display_value="Main Course">9ba27bde4144d150f877fdd676e40483</sc_category>
+        <sys_class_name>sc_cat_item_category</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-06-22 19:28:33</sys_created_on>
+        <sys_id>f1e046f810989510f877e0283ffbcdac</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Main Course.Pay Restaurant Bill</sys_name>
+        <sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</sys_scope>
+        <sys_update_name>sc_cat_item_category_f1e046f810989510f877e0283ffbcdac</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-06-22 19:28:33</sys_updated_on>
+    </sc_cat_item_category>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</application>
+        <file_path/>
+        <instance_id>c0b26ae9f0330110f87765368869fbdd</instance_id>
+        <instance_name>instance</instance_name>
+        <name>sc_cat_item_category_f1e046f810989510f877e0283ffbcdac</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sc_cat_item_category"><sc_cat_item_category action="INSERT_OR_UPDATE"><sc_cat_item display_value="Pay Restaurant Bill">6c6cf9b410989510f877e0283ffbcdea</sc_cat_item><sc_category display_value="Main Course">9ba27bde4144d150f877fdd676e40483</sc_category><sys_class_name>sc_cat_item_category</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2022-06-22 19:28:33</sys_created_on><sys_id>f1e046f810989510f877e0283ffbcdac</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Main Course.Pay Restaurant Bill</sys_name><sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package><sys_policy/><sys_scope display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</sys_scope><sys_update_name>sc_cat_item_category_f1e046f810989510f877e0283ffbcdac</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2022-06-22 19:28:33</sys_updated_on></sc_cat_item_category></record_update>]]></payload>
+        <payload_hash>-1289431170</payload_hash>
+        <record_name>Main Course.Pay Restaurant Bill</record_name>
+        <reverted_from/>
+        <source>bdaae16741730910f877fdd676e404d1</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-06-22 19:28:33</sys_created_on>
+        <sys_id>bde046f810989510f877e0283ffbcdaf</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1818ce343ca0000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-06-22 19:28:33</sys_updated_on>
+        <type>Catalog Item Category</type>
+        <update_guid>f5e046f846989510e6480d6563e9a1af</update_guid>
+        <update_guid_history>f5e046f846989510e6480d6563e9a1af:-1289431170</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Main Course.Pay Restaurant Bill">0c504e4f4ddcd510f87791a4a837f37b</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-06-29 19:12:18</sys_created_on>
+        <sys_db_object display_value="" name="sc_cat_item_category">sc_cat_item_category</sys_db_object>
+        <sys_id>26f9c666a5034ae4b0d696a819fbf504</sys_id>
+        <sys_metadata>f1e046f810989510f877e0283ffbcdac</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Main Course.Pay Restaurant Bill</sys_name>
+        <sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Restaurant Management">f9aae16741730910f877fdd676e404cf</sys_scope>
+        <sys_scope_delete display_value="">2fc304b5326340dba29f505a63b222c1</sys_scope_delete>
+        <sys_update_name>sc_cat_item_category_f1e046f810989510f877e0283ffbcdac</sys_update_name>
+        <sys_update_version display_value="sc_cat_item_category_f1e046f810989510f877e0283ffbcdac">bde046f810989510f877e0283ffbcdaf</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+    </sys_metadata_delete>
+</record_update>

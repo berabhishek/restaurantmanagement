@@ -38,8 +38,8 @@
         <item_table/>
         <mandatory>false</mandatory>
         <message/>
-        <message_html><![CDATA[<p>Hi ${sys_created_by},</p>
-<p>Your order ${request_item.cat_item.name} X ${request_item.quantity} is being cooked.</p>
+        <message_html><![CDATA[<p>Hi ${requested_for.first_name} ${requested_for.last_name},</p>
+<p>Your order <a href="https://k8s0316038-node1.thunder.lab3.service-now.com/restaurant?id=order_status&amp;table=sc_request&amp;sys_id=${request.sys_id}" target="_blank" rel="noopener">${request_item.cat_item.name} X ${request_item.quantity}</a> is being cooked.</p>
 <p>&nbsp;</p>
 <p>Thanks,</p>]]></message_html>
         <message_list/>

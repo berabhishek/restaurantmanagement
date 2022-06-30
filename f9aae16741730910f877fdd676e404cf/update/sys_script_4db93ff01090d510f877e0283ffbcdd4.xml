@@ -36,7 +36,6 @@
 	var amount = 0;
 	while (bookingMap.next()) {
 		amount += parseInt(bookingMap.request.price);
-		gs.addInfoMessage(amount);
 	}
 	current.setValue("amount", amount);
 	current.update();
@@ -48,7 +47,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>4db93ff01090d510f877e0283ffbcdd4</sys_id>
-        <sys_mod_count>8</sys_mod_count>
+        <sys_mod_count>1</sys_mod_count>
         <sys_name>Calculate Restaurant Bill Amount</sys_name>
         <sys_overrides/>
         <sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package>

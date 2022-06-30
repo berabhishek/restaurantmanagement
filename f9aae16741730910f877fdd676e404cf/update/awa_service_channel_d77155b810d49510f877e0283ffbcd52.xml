@@ -6,7 +6,7 @@
         <assignment_group_field>assignment_group</assignment_group_field>
         <condition/>
         <default_capacity>20</default_capacity>
-        <default_size>20</default_size>
+        <default_size>1</default_size>
         <description>Cashier payments service channel</description>
         <enable_logging>false</enable_logging>
         <inbox_alert_audio/>
@@ -20,7 +20,7 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2022-06-22 16:02:16</sys_created_on>
         <sys_id>d77155b810d49510f877e0283ffbcd52</sys_id>
-        <sys_mod_count>15</sys_mod_count>
+        <sys_mod_count>1</sys_mod_count>
         <sys_name>Restaurant Cashier Channel</sys_name>
         <sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package>
         <sys_policy/>
