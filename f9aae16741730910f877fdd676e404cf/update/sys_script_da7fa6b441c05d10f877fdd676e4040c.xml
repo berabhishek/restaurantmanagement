@@ -46,9 +46,25 @@
 		return;
 	}
 
+	var restaurant = new GlideRecord("x_snc_restaurant_m_restaurant_capacity");
+	restaurant.addQuery("sys_id", tables.restaurant);
+	restaurant.query();
+	var available_capacity = 0;
+	if (restaurant.next()) {
+		available_capacity = restaurant.getValue("available_capacity");
+	}
+	
+	if (available_capacity < current.capacity) {
+		gs.addErrorMessage("No Capacity");
+		current.setAbortAction(true);
+		return;
+	}
+	
 	bookings = new GlideRecord("x_snc_restaurant_m_bookings");
 	bookings.addQuery("status", "active");
-
+	restaurant.setValue("available_capacity", available_capacity - current.capacity);
+	restaurant.update();
+	
 	tables.setValue("occupied", "true");
 	tables.update();
 	current.setValue("status", "active");
@@ -61,7 +77,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>da7fa6b441c05d10f877fdd676e4040c</sys_id>
-        <sys_mod_count>24</sys_mod_count>
+        <sys_mod_count>11</sys_mod_count>
         <sys_name>Book a table</sys_name>
         <sys_overrides/>
         <sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package>

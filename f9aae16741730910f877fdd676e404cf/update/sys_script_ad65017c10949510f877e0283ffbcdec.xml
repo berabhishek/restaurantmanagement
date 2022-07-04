@@ -33,13 +33,23 @@
 
 	// Add your code here
 	var dining_table = new GlideRecord("x_snc_restaurant_m_dining_table");
-	dining_table.addQuery("sys_id", current.table.sys_id);
+	dining_table.addQuery("sys_id", current.table);
 	dining_table.query();
 	if (dining_table.next()) {
 		dining_table.setValue("occupied", "false");
 		dining_table.update();
 	}
-
+	
+	var restaurant = new GlideRecord("x_snc_restaurant_m_restaurant_capacity");
+	restaurant.addQuery("sys_id", dining_table.restaurant);
+	restaurant.query();
+	
+	if (restaurant.next()) {
+		var available_capacity = Number(restaurant.getValue("available_capacity")) + Number(current.getValue("capacity"));
+		restaurant.setValue("available_capacity", available_capacity);
+		restaurant.update();
+	}
+	
 })(current, previous);]]></script>
         <sys_class_name>sys_script</sys_class_name>
         <sys_created_by>admin</sys_created_by>
@@ -47,7 +57,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>ad65017c10949510f877e0283ffbcdec</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>11</sys_mod_count>
         <sys_name>Clear Booking Table</sys_name>
         <sys_overrides/>
         <sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package>

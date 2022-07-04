@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element db_object_id="b01917ae4d549510f87791a4a837f310" label="Restaurant" max_length="40" name="x_snc_restaurant_m_restaurant_capacity" type="collection">
+        <element label="Available Capacity" max_length="40" name="available_capacity" type="integer"/>
         <element label="Capacity" max_length="40" name="capacity" type="integer"/>
         <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
     </element>

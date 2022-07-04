@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="awa_queue">
     <awa_queue action="INSERT_OR_UPDATE">
         <active>true</active>
-        <average_wait_time>1970-01-01 00:00:00</average_wait_time>
+        <average_wait_time>1970-01-01 00:01:23</average_wait_time>
         <condition/>
         <condition_mode>simple</condition_mode>
         <condition_script><![CDATA[(function executeCondition(/* glide record */ current) {  
@@ -25,7 +25,7 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2022-06-22 15:40:36</sys_created_on>
         <sys_id>b98c0d3410d49510f877e0283ffbcd4c</sys_id>
-        <sys_mod_count>10</sys_mod_count>
+        <sys_mod_count>12</sys_mod_count>
         <sys_name>Cashier Queue</sys_name>
         <sys_package display_value="Restaurant Management" source="x_snc_restaurant_m">f9aae16741730910f877fdd676e404cf</sys_package>
         <sys_policy/>
